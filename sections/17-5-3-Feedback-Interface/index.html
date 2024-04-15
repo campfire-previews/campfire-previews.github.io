@@ -1,0 +1,149 @@
+<h2>5.3 - Feedback Interface</h2>
+<p><img src="images/image17.png" alt="alt_text" title="image_tooltip"></p>
+<p>We wanted to design our feedback interface to do a few things:</p>
+<ul>
+<li>to be integrated with the deploy preview</li>
+<li>to be able to handle comments</li>
+<li>to allow the user to capture richer data about their experience in order to give more context in their feedback</li>
+</ul>
+<h3>5.3.1 - Integrating the Deploy Preview with the Feedback Interface</h3>
+<p><img src="images/image18.gif" alt="alt_text" title="image_tooltip"></p>
+<p>When it came to integrating our feedback interface with our deploy preview, we had two options:</p>
+<ol>
+<li>Inject or ask the user to add the feedback interface to their application – perhaps as a custom web component, script, or using an iframe</li>
+<li>Create a feedback interface application that embeds the deploy preview within it using an iframe</li>
+</ol>
+<p><img src="images/image19.png" alt="alt_text" title="image_tooltip"></p>
+<p>For simplicity’s sake, we decided to go with option 2. We built a React application with an iframe that points to the deploy preview.</p>
+<p>This meant that everytime we deployed a preview app, we actually had to generate two URLs: one that pointed to the deploy preview itself, and one that pointed to the feedback interface.</p>
+<table>
+  <tr>
+   <td><strong>Component</strong>
+   </td>
+   <td><strong>URL</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>Deploy Preview
+   </td>
+   <td>client-app-12.preview.campfire.com
+   </td>
+  </tr>
+  <tr>
+   <td>Feedback Interface
+   </td>
+   <td>feedback-interface.campfire.com/client-app/12
+   </td>
+  </tr>
+</table>
+<p>The user would be given the URL that pointed to the feedback interface, while the URL generated for the deploy preview would be used internally by the feedback interface application.</p>
+<table>
+  <tr>
+   <td colspan="2" >trade-offs
+   </td>
+  </tr>
+  <tr>
+   <td>
+<img src="images/image20.png" width="" alt="alt_text" title="image_tooltip">
+   </td>
+   <td>
+<img src="images/image21.png" width="" alt="alt_text" title="image_tooltip">
+   </td>
+  </tr>
+  <tr>
+   <td>Pros:
+<ul>
+<li>Only need one running task per deploy preview, when there are no active deploy previews, no resources are being used on AWS
+<li>Since the feedback interface is embedded within the deploy preview, the deploy preview will load first, and then the feedback interface will load second, which might be a better user experience
+<p>
+Cons:
+<ul>
+<li>Additional complexity: who adds the script to the application – us or the user? Where in the application should we embed the feedback interface? Would it work across different front-end frameworks for building applications?
+</li>
+</ul>
+</li>
+</ul>
+   </td>
+   <td>Pros:
+<ul>
+<li>Simple to implement
+<li>Don’t need to worry about it working in all applications
+<p>
+Cons:
+<ul>
+<li>Even when no deploy previews are up, feedback interface would still be running on aws, leading to additional costs even though the user isn’t using it
+</li>
+</ul>
+</li>
+</ul>
+   </td>
+  </tr>
+</table>
+<p>Using iframes in our architecture added complexities and increased costs, as it required a separate task to run the feedback interface continuously, even when not in use. To address these issues, we considered using web components, which are custom reusable HTML elements, to embed the feedback interface directly within the client app. This integration could potentially reduce the need for a separate task and better match resource use with actual demand for deploy previews. However, we were cautious about adopting web components because they might not support all the functionalities needed for the feedback interface and could introduce additional complexity in its management.</p>
+<h3>5.3.2 - Comments</h3>
+<p>In Campfire, comments are crucial for enabling detailed feedback and discussions directly within deploy previews. Comments allow all stakeholders, including those without technical expertise or a GitHub account, to actively participate in the deployment review process. Comments allow teams to discuss issues and suggest improvements, fostering an interactive and collaborative review environment.</p>
+<p>To ensure a cohesive experience, we designed Campfire to aggregate comments in both the GitHub interface and within the deploy preview itself. This dual visibility ensures that feedback is not lost across platforms and supports a unified discussion thread that all team members can follow and contribute to, regardless of where they choose to interact.</p>
+<p>To accomplish this, we needed to retrieve existing comments from GitHub pull requests and also enable the posting of new comments from within Campfire. The implementation of this commenting functionality involved integrating with GitHub’s API.</p>
+<p>GitHub has three options for Campfire to obtain the necessary authorization in order to push comments from Campfire back to the GitHub pull request: a Personal Access Token, a User Access Token, or an App Installation Token. The first two options require a user to have a GitHub account.</p>
+<p>Recognizing that not all Campfire users would have a GitHub account, we chose to utilize GitHub’s App Installation Token for authorization. This approach allows Campfire to post comments on behalf of users, thereby maintaining the integrity of the feedback loop while removing barriers to participation for users who are not registered on GitHub.</p>
+<p>Generating this token requires the organization using Campfire to register and install a GitHub App. Once the app was installed, Campfire would then be able to generate the required authorization though its credentials. Afterwards, the GitHub App automatically cross-posts any comments made in Campfire directly to the pull request.</p>
+<p>Adding authorization to our requests also benefited our GET requests: increasing the rate limits and allowing GET requests to private repos.</p>
+<p>Using our GitHub app to authorize POST requests to the API, however, also meant that all Campfire user’s comments would be attributed to the App:</p>
+<p><img src="images/image22.png" alt="alt_text" title="image_tooltip"></p>
+<p>To get around this issue, Campfire displays a welcome screen for first time users before they are able to view the deploy preview. The name the user enters is then stored in their browser’s local storage, ready for use on subsequent visits. The user’s name is also displayed in the top right corner of the feedback interface and prefixed to any comments they make through Campfire.</p>
+<table>
+  <tr>
+   <td>
+<img src="images/image23.png" width="" alt="alt_text" title="image_tooltip">
+<p>
+The welcome screen asks the user for their name before they can interact with the deploy preview.
+   </td>
+   <td>
+<img src="images/image24.png" width="" alt="alt_text" title="image_tooltip">
+<p>
+Once they enter their name it’s displayed in the top right.
+<p>
+<img src="images/image25.png" width="" alt="alt_text" title="image_tooltip">
+<p>
+The tab is collapsible so it’s not in the way.
+   </td>
+  </tr>
+</table>
+<p>Comments can now be attributed to the right user:
+<img src="images/image26.png" alt="alt_text" title="image_tooltip"></p>
+<p>In addition, Campfire includes some basic information on the user’s operating system, browser, and screen-size in order to give better context to comments. For example, it may be the case that the UI breaks in certain browsers, but not others, or when viewed at certain dimensions. Having the user’s browser stack info enables the engineering team to more easily replicate the conditions that lead to issues, thereby fixing any bugs much faster.</p>
+<p>To avoid exposing sensitive data from the feedback interface, the GitHub App’s credentials were stored in AWS Secrets Manager. Any GitHub-related actions required retrieving these credentials beforehand to authenticate the GitHub App.</p>
+<p><img src="images/image27.png" alt="alt_text" title="image_tooltip"></p>
+<p>Flow for posting comments ^</p>
+<h3>5.3.3 - Exploring Screen Capture Solutions</h3>
+<p>In addition to plaintext comments, we explored adding screen capture functionality to Campfire to enrich user feedback with more context. The goal was to enhance debugging and provide a clearer understanding of user experiences by recording interactions that can help quickly identify and resolve issues.</p>
+<p>There's a few different ways to approach building a screen capture feature, each serving distinct purposes: screenshots, screen recordings, and session replays.</p>
+<p>Screenshots capture a single moment in time which is useful for highlighting specific issues, while screen recordings capture a sequence of actions, offering a video-like review of user interactions.</p>
+<p>Session replay goes even further by recording all DOM events to create a detailed playback of user interactions, offering the most comprehensive insight into user behaviors and problems encountered during a session. This rich data is invaluable for developers seeking to understand and replicate issues users face.</p>
+<p>Our exploration of potentially adding a screen capture functionality to Campfire began with researching the SDKs of third-party tools such as Loom and Zight, which offer screen recording and screenshot capabilities. We decided to not use these solutions given that they’re not open-source or self-hosted, which doesn’t align with Campfire’s open-source design.</p>
+<p>We also looked at open-source libraries like “html2canvas”, “react-screen-capture”, and the “Client-Side Screen Capture” API for screenshot capabilities. However, we found that these tools couldn’t capture the full range of user interactions dynamically. Session replay became the preferred choice because it records detailed user activities in the app, providing a more comprehensive and dynamic overview.</p>
+<p>Session replay differs from screen recordings as it captures DOM events to reconstruct the user interactions that occurred on the website. This includes mouse movements, clicks, scroll events, keystrokes, and any mutations in the DOM such as changes in the layout, text, or added/removed elements. We felt this aligns better with Campfire's objective of improving collaboration and feedback by offering a deeper analysis and debugging capability.</p>
+<h3>5.3.4 - Implementing Session Replay and SDK</h3>
+<p>To provide context-rich, feedback features into Campfire, we implemented session replay as a key component of the feedback interface. Users can create visual recordings of the deploy preview and upload them directly to the comment interface through a shareable link. We chose the open-source rrweb library to implement this feature due to its ease of use.</p>
+<p>Unfortunately, we ran into a limitation with rrweb when recording embedded applications, as the session replay redacted all interactions that occurred within the iframe. Due to cross-origin policies and browser security measures, libraries such as rrweb are prohibited from accessing the contents of iframes that are hosted on different domains. This presented an issue as the origins of embedded deploy previews were different from the feedback interface.</p>
+<p><img src="images/image28.gif" alt="alt_text" title="image_tooltip"></p>
+<p><em>^ session replay not working and only showing a blank screen</em></p>
+<p>In situations where developers have ownership of both the parent application (feedback interface) and the embedded application (client application), rrweb suggests embedding their library components to both applications. All recorded user interactions in the embedded application are then sent to the parent application.</p>
+<p><img src="images/image29.png" alt="alt_text" title="image_tooltip"></p>
+<p>While rrweb's solution successfully displayed iframes in recordings, it required having rrweb's components being embedded in the client application. For Campfire, this presented an additional prerequisite for the user: the rrweb component (or an SDK) must be embedded into the application in order for the session replay feature to function properly. We dismissed this option as one of our priorities in developing Campfire was to have as few prerequisites for our users as possible.</p>
+<p>Another alternative to rrweb’s solution was to programmatically inject the rrweb component into the embedded application. This removed the prerequisite for users to manually embed the component themselves. However, this idea was later deemed unviable due to security measures enforced by browsers. The same cross-origin policies that restricted rrweb from directly recording iframes also restricted parent applications from accessing the contents of the iframe. For Campfire, the feedback interface could not manipulate the DOM of the iframe and inject the rrweb component.</p>
+<p>The third option was to use special response headers when requesting the client application in the feedback interface. In the HTTP request/response lifecycle, the Content-Security-Policy response header can be used to authorize certain origins to access the requested resource (i.e., the client application) within iframes. For Campfire, this meant the feedback interface could be whitelisted and allowed to manipulate the DOM of the embedded client application.</p>
+<p>While this approach appeared to be a viable solution, Campfire’s current AWS infrastructure cannot append response headers to resources without the addition of other AWS services. AWS’s Application Load Balancer does not provide a mechanism for adding response headers. AWS Cloudfront, on the other hand, provides the capabilities to do so. To avoid adding additional complexity to our AWS infrastructure, we did not choose this approach.</p>
+<p>After considering our possible solutions and their tradeoffs, we decided the simplest approach would be to create our own SDK and require clients to embed the SDK into their applications. The SDK abstracts away the rrweb library component and is responsible for transmitting recorded user interactions back to the feedback interface.</p>
+<p><img src="images/image30.png" alt="alt_text" title="image_tooltip"></p>
+<p>Although the SDK adds an additional prerequisite for our users, we believed it was the most straightforward option for our first iteration of Campfire. An advantage of building an SDK is we can continue to build onto the SDK in the future to add new features to the feedback interface. Features that we had previously decided against due to the lack of inter-iframe communication can now be implemented with the addition of the SDK.</p>
+<h3>5.3.6 - Handling Ad Blocker Interference</h3>
+<p>After incorporating the rrweb library for session replay into our Campfire application, we encountered a significant issue: the entire Campfire app failed to load for users with ad-blocking extensions active in their browsers. This problem was traced back to rrweb being integrated into several of our React components, which are interconnected. When rrweb was blocked by an ad blocker, it led to a cascading failure, preventing the entire application from loading, not just the session replay feature.</p>
+<p>To address this, instead of identifying and managing individual ad-blocking extensions, we focused on detecting whether the rrweb functionality was obstructed. If rrweb failed to load, we implemented a system to inform the user through a notification banner, advising them to disable their ad blocker to access Campfire.</p>
+<p>Implementing this solution involved exploring dynamic component and module loading in React. By adopting dynamic imports, we were able to conditionally load rrweb components, ensuring that even if these components failed to load due to an ad blocker, the rest of the application would remain functional. This approach also allowed us to display a banner alerting users of the need to disable their ad blockers.</p>
+<h3>5.3.7 - Serverless Backend</h3>
+<p>To support the operational needs of Campfire, adding a backend to Campfire was necessary. This backend would primarily handle API interactions with GitHub for comment synchronization and utilize AWS services for secure data handling and storage. Authenticated calls to GitHub's API were essential for retrieving and posting comments to pull requests, while the AWS SDK was needed to securely manage sensitive authentication data and store session replay data. Given the complexity of these tasks, choosing the right backend architecture was crucial to maintaining efficient operations without excessive overhead.</p>
+<p>We initially considered two main approaches for our backend infrastructure: a traditional server-based backend and a serverless architecture. The traditional setup would have involved using a server, such as one running an Express application, potentially paired with a web server like Nginx to manage API routing and load balancing. This arrangement would likely require continuous running of multiple server tasks, increasing operational complexity and costs.</p>
+<p>To minimize maintenance and streamline scaling, we opted for a serverless approach using AWS Lambda, a serverless computing service that allows developers to run code without provisioning or managing servers. Lambda functions automatically scale based on the demand, executing code in response to events and managing the compute resources required. This integration with AWS services enables secure interactions and data handling, with costs incurred only when the functions are actually executed. By adopting Lambda, we effectively reduced the overhead of managing server infrastructure and enhanced scalability and cost-effectiveness, focusing solely on the functionality of the code.</p>
+<p>Briefly explain what a backend server (express) is.</p>
+<p>Explain what a lambda is.</p>

@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="images/favicon.svg" type="image/svg">
+    <script src="js/script.js" defer></script>
     <title>Campfire</title>
   </head>
   <body>
     <header>
       <img alt="campfire-logo" src="images/logo.svg">
       <nav>
-        <a href="#case-study">case study</a>
+        <a href="#case-study-content">case study</a>
         <a href="#team">team</a>
         <a href="">github</a>
       </nav>
@@ -23,7 +24,7 @@
         <img src="images/logo-mark.svg" alt="campfire-logo">
         <h1>campfire</h1>
         <h2>open-source, self-hosted collaborative deploy previews for everyone</h2>
-        <a href="#case-study" id="cta">read our case study</a>
+        <a href="#case-study-content" id="cta">read our case study</a>
       </section>
     </div>
     <div id="rock-wrapper">
@@ -72,51 +73,134 @@
     <section id="features-case-study"></section>
     <section id="case-study">
       <h1>case study</h1>
-
       <!-- CASE STUDY TOC -->
       <div id="case-study-content">
         <aside id="toc">
           <ul>
             
               
-                <li>
+                <li data-section="Introduction">
                   <a href="#section-1-Introduction">Introduction</a>
                 </li>
               
             
               
-                <li class="subitem">
+                <li class="subitem" data-section="Introduction">
                   <a href="#section-1-1-Terms">Terms</a>
                 </li>
               
             
               
-                <li>
+                <li data-section="The Problem">
                   <a href="#section-2-The-Problem">The Problem</a>
                 </li>
               
             
               
-                <li class="subitem">
+                <li class="subitem" data-section="The Problem">
                   <a href="#section-2-1-Before-Deploy-Previews">Before Deploy Previews</a>
                 </li>
               
             
               
-                <li class="subitem">
+                <li class="subitem" data-section="The Problem">
                   <a href="#section-2-2-Deploy-Previews">Deploy Previews</a>
                 </li>
               
             
               
-                <li class="subitem">
+                <li class="subitem" data-section="The Problem">
                   <a href="#section-2-3-Limitations-of-Deploy-Previews">Limitations of Deploy Previews</a>
                 </li>
               
             
               
-                <li>
+                <li data-section="Existing Solutions">
                   <a href="#section-3-Existing-Solutions">Existing Solutions</a>
+                </li>
+              
+            
+              
+                <li class="subitem" data-section="Existing Solutions">
+                  <a href="#section-3-1-Deploy-Previews-as-a-Feature">Deploy Previews as a Feature</a>
+                </li>
+              
+            
+              
+                <li class="subitem" data-section="Existing Solutions">
+                  <a href="#section-3-2-Livecycle">Livecycle</a>
+                </li>
+              
+            
+              
+                <li class="subitem" data-section="Existing Solutions">
+                  <a href="#section-3-3-DIY">DIY</a>
+                </li>
+              
+            
+              
+                <li data-section="Introducing Campfire">
+                  <a href="#section-4-Introducing-Campfire">Introducing Campfire</a>
+                </li>
+              
+            
+              
+                <li class="subitem" data-section="Introducing Campfire">
+                  <a href="#section-4-1-Campfire-Features">Campfire Features</a>
+                </li>
+              
+            
+              
+                <li class="subitem" data-section="Introducing Campfire">
+                  <a href="#section-4-2-Who-Campfire-is-For">Who Campfire is For</a>
+                </li>
+              
+            
+              
+                <li data-section="Developing Campfire">
+                  <a href="#section-5-Developing-Campfire">Developing Campfire</a>
+                </li>
+              
+            
+              
+                <li class="subitem" data-section="Developing Campfire">
+                  <a href="#section-5-1-Automating-Deploy-Previews">Automating Deploy Previews</a>
+                </li>
+              
+            
+              
+                <li class="subitem" data-section="Developing Campfire">
+                  <a href="#section-5-2-Accessing-Deploy-Previews">Accessing Deploy Previews</a>
+                </li>
+              
+            
+              
+                <li class="subitem" data-section="Developing Campfire">
+                  <a href="#section-5-3-Feedback-Interface">Feedback Interface</a>
+                </li>
+              
+            
+              
+                <li class="subitem" data-section="Developing Campfire">
+                  <a href="#section-5-4-Data-Storage">Data Storage</a>
+                </li>
+              
+            
+              
+                <li data-section="Using Campfire">
+                  <a href="#section-6-Using-Campfire">Using Campfire</a>
+                </li>
+              
+            
+              
+                <li data-section="Future Work">
+                  <a href="#section-7-Future-Work">Future Work</a>
+                </li>
+              
+            
+              
+                <li data-section="References">
+                  <a href="#section-8-References">References</a>
                 </li>
               
             
@@ -125,57 +209,383 @@
         <!-- CASE STUDY SECTIONS -->
         <article>
           
-            <section id="section-1-Introduction">
+            <section id="section-1-Introduction" data-section="Introduction">
               <h1>1 - Introduction</h1>
-<p><img src="images/logo.svg" alt="logo"></p>
-<p>Campfire is an open-source, self-hosted deploy preview solution for containerized, headless frontends. Much like how an actual campfire brings people together to trade stories, it aims to be a central place for cross-functional teams to visually review and comment on proposed code changes or bug fixes early in the development cycle.</p>
-<p>Campfire creates a new deploy preview upon every pull request, creating a live version of the application incorporating the changes – all accessible via a shareable link. This live version is shipped with tools that allow users to provide feedback directly on the deploy preview. The goal is to simplify collaboration between teams and address common bottlenecks that delay project timelines, by integrating seamlessly into existing development pipelines.</p>
+<p>Campfire is an open-source, self-hosted, collaborative deploy-preview solution for containerized, headless frontends. Much like the way an actual campfire brings people together to trade stories, Campfire aims to be a central place for cross-functional teams to visually review and collaborate on proposed code changes or bug fixes early in the software development cycle.</p>
+<p><img src="images/image1.png" alt="alt_text" title="image_tooltip"></p>
+<p>Campfire generates a deploy preview for each pull request, showcasing the latest commit with the proposed changes, which can be accessed through a public URL. The URL directs users to their deploy preview, equipped with Campfire's suite of comprehensive feedback tools.</p>
+<p>Integrating a feedback interface directly into the deploy preview simplifies collaboration between teams and addresses common bottlenecks that delay project timelines.</p>
 
             </section>
           
-            <section id="section-1-1-Terms">
+            <section id="section-1-1-Terms" data-section="Terms">
               <h2>1.1 - Terms</h2>
-<p>A brief overview of the terms we’ll be using throughout this case study:</p>
-<ul>
-<li>
-<p><strong>Client App</strong> - The user’s code that we pull from the repo when a new Pull Request is opened</p>
-</li>
-<li>
-<p><strong>Deploy Preview</strong> - Temporary infrastructure that powers each client app preview</p>
-</li>
-<li>
-<p><strong>Feedback Interface</strong> - The visual overlay aspect of the deploy preview where users collaborate and provide feedback</p>
-</li>
-</ul>
+<p>In this case study, we'll frequently reference the following technical terms:</p>
+<p><strong>Client App</strong> - The codebase of the user, retrieved from the repository when initiating a new pull request or when a new commit is made to the same pull request.</p>
+<p><strong>Deploy Preview</strong> - The ephemeral infrastructure provisioned to host a live preview of the Client App for each pull request. Also known as ephemeral environments, preview environments, or preview apps.</p>
+<p><strong>Feedback Interface</strong> - A relatively new component of some deploy preview solutions, which provides an overlay for user collaboration and feedback on the previewed changes.</p>
+<p><img src="images/image2.gif" alt="alt_text" title="image_tooltip"></p>
 
             </section>
           
-            <section id="section-2-The-Problem">
+            <section id="section-2-The-Problem" data-section="The Problem">
               <h1>2 - The Problem</h1>
 
             </section>
           
-            <section id="section-2-1-Before-Deploy-Previews">
+            <section id="section-2-1-Before-Deploy-Previews" data-section="Before Deploy Previews">
               <h2>2.1 - Before Deploy Previews</h2>
-<p>In the development lifecycle, visual feedback was often delayed until near deployment, which could lead to significant revisions and development delays due to late-discovered issues. Non-engineering stakeholders also lacked early visibility, only seeing changes in a shared staging environment. This inefficiency in developer time and lack of early testing environments meant many user experience and performance issues remained undetected until late in the cycle or post-deployment. [1]</p>
+<p>In traditional software engineering practices, visual feedback during the development lifecycle was often delayed until near deployment, which led to significant revisions and delays. Non-engineering team members typically did not have early visibility – only seeing proposed changes to the code late in the development process in a shared staging environment.</p>
+<p>This method not only caused inefficiencies for developers but also led to a bottleneck in the development process. The reliance on a shared staging environment for visual feedback created a single point of failure where various features and changes converged, increasing the risk of conflicts and bugs that complicated the testing process. The lack of early, dedicated testing environments meant that many UI/UX and performance issues remained undetected until the development was near completion or after the product had already been deployed, further amplifying the risk of costly post-launch fixes and updates. [1]</p>
+<p><img src="images/image3.png" alt="alt_text" title="image_tooltip"></p>
 
             </section>
           
-            <section id="section-2-2-Deploy-Previews">
+            <section id="section-2-2-Deploy-Previews" data-section="Deploy Previews">
               <h2>2.2 - Deploy Previews</h2>
-<p>The advent of deploy previews, also known as ephemeral environments or preview apps, improved this process by allowing immediate changes within production-like environments, significantly shortening the feedback loop. By integrating preview environments into existing development pipelines, organizations could streamline workflows, detect problems earlier, and align products more closely with user expectations. [2]</p>
+<p>The introduction of deploy previews into software development workflows marked a significant advancement. As each new commit is added to a pull request, a new deploy preview is automatically generated. This provides a production-like view of the commit’s proposed changes allowing for feedback on proposed changes to occur much earlier in the development process.</p>
+<p>While deploy preview environments offer a snapshot of the latest changes in isolation, they primarily facilitate technical reviews rather than collaborative discussions. Their primary value is in enabling immediate, isolated testing of code changes, which helps in the early detection of issues and alignment of the product with user expectations. [2]</p>
+<p><img src="images/image4.png" alt="alt_text" title="image_tooltip"></p>
 
             </section>
           
-            <section id="section-2-3-Limitations-of-Deploy-Previews">
+            <section id="section-2-3-Limitations-of-Deploy-Previews" data-section="Limitations of Deploy Previews">
               <h2>2.3 - Limitations of Deploy Previews</h2>
-<p>Existing preview environment solutions, while adept at showcasing code changes, often lack robust collaboration features, necessitating reliance on third-party tools, which can slow down the development process. These limitations can be particularly challenging for non-engineering team members, such as project managers, designers, and/or QA personnel, who may not have experience using or have access to GitHub or other developer tools where visual feedback is given. [3]</p>
+<p>While existing deploy preview solutions are adept at showcasing code changes, most lack features to provide feedback to the proposed changes within the same application. This forces users to use third-party tools to provide feedback on the proposed changes, which can slow down the development process. The absence of a unified feedback interface can lead to scattered comments across platforms like Slack or GitHub, complicating the aggregation and tracking of feedback, and often causing the context to be lost.</p>
+<p>Comments made across multiple different platforms lead to disjointed communication, complicating the feedback process. Even if developers consolidate discussions on GitHub, non-engineering team members, such as project managers, designers, and QA personnel, are often left out of the loop. They may not have GitHub accounts and typically seek a straightforward way to comment on visual changes. Not having a built-in, accessible feedback system in deploy previews makes it harder to collaborate and quickly fix problems. [3]</p>
+<p><img src="images/image5.png" alt="alt_text" title="image_tooltip"></p>
 
             </section>
           
-            <section id="section-3-Existing-Solutions">
+            <section id="section-3-Existing-Solutions" data-section="Existing Solutions">
               <h1>3 - Existing Solutions</h1>
-<p>The landscape for deploy previews includes different solutions like Netlify Drawer, Vercel Comments, and Livecycle, each offering tools to facilitate the visual review process. These services come with different tradeoffs regarding hosting flexibility, open-source availability, and self-hosting capabilities.</p>
+<p>Several solutions have been developed to improve the lack of commenting ability in deploy previews. Services like Netlify Drawer, Vercel Comments, and Livecycle have attempted to bridge this gap by offering built-in tools for capturing feedback when the user is viewing the proposed changes.</p>
+<p>Netlify primarily hosts static sites and supports Jamstack projects, including Netlify Drawer as a standard feature. Similarly, Vercel is tailored for frontend frameworks like Next.js, incorporating Vercel Comments into its regular services. Alternatively, Livecycle's preview environments are the core of their project offering.</p>
+<p>Each of these services presents different tradeoffs, particularly in terms of hosting options, whether they are open-source, and the ease of setup and use.</p>
+
+            </section>
+          
+            <section id="section-3-1-Deploy-Previews-as-a-Feature" data-section="Deploy Previews as a Feature">
+              <h2>3.1 - Deploy Previews as a Feature</h2>
+<p>Netlify and Vercel integrate deploy previews within their broader service suite, providing a production-like view of changes pre-deployment. Netlify’s Drawer enhances this with a feedback toolbar for screenshots, recordings, and comments, synchronizing feedback between the deploy preview and GitHub via a bot or via GitHub authentication. This integration includes the user’s browser metadata in comments, aiding in providing context in order to make it easier for developers to recreate and fix any potential bugs.</p>
+<p>Vercel’s Comments leverage Liveblocks, a third-party real-time collaboration tool, allowing users to attach comments directly to UI elements. This integration improves feedback by allowing more interactive and detailed discussions. Unlike Netlify, Vercel opts to sync their comments with Slack rather than GitHub.</p>
+<p>These services, while feature-rich, come with the caveat of requiring full application hosting on their platforms, limiting flexibility for teams who prefer independent control over their deployment strategies.</p>
+
+            </section>
+          
+            <section id="section-3-2-Livecycle" data-section="Livecycle">
+              <h2>3.2 - Livecycle</h2>
+<p>Livecycle's service offers a unique combination of deploy previews and collaborative tools through its products, Preevy and Livecycle. Preevy manages preview environments via CI/CD workflows or an SDK for external hosting. Livecycle also contains a feedback interface enabling in-context commenting, HTML/CSS suggestions, and visual edit comparisons. Additionally, Livecycle provides debugging tools like screen size adjustments, rudimentary dev tools, and console access. Its session replay feature automatically captures user interactions within the preview environment, offering a replayable video to enrich feedback with detailed context.</p>
+
+            </section>
+          
+            <section id="section-3-3-DIY" data-section="DIY">
+              <h2>3.3 - DIY</h2>
+<p>If a company decides to build their own custom deploy preview solution from scratch, it will give the team full control over their development and review process. However, building this system is technically challenging and requires many resources. Teams need to develop the preview functionality and a feedback system that fits their workflow, which means a lot of coding, integrating with current tools, and ongoing maintenance to meet different project needs.</p>
+<p>Due to these challenges, developing a deploy preview solution with a feedback system from scratch can be overwhelming and impractical for organizations without a lot of technical skills and resources.</p>
+<p><img src="images/image6.png" alt="alt_text" title="image_tooltip"></p>
+<p><img src="images/image7.png" alt="alt_text" title="image_tooltip"></p>
+
+            </section>
+          
+            <section id="section-4-Introducing-Campfire" data-section="Introducing Campfire">
+              <h1>4 - Introducing Campfire</h1>
+<p><img src="images/image8.gif" alt="alt_text" title="image_tooltip"></p>
+<p>Campfire combines the strengths of deploy preview solutions like Netlify Drawer with the adaptability of Livecycle’s model, offering a self-hosted, open-source alternative for teams to manage their preview environments. It fosters collaboration across different teams by syncing the Campfire feedback interface with the corresponding GitHub pull request, thus enhancing team communication and feedback efficiency.</p>
+<p>Campfire grants teams complete control over their infrastructure, aligning with various development workflows. We also built a CLI tool to simplify the installation and configuration of Campfire. Our integration with GitHub automates the creation, deployment, and dismantling of preview environments, updating in real-time to increase collaboration throughout the development process.</p>
+
+            </section>
+          
+            <section id="section-4-1-Campfire-Features" data-section="Campfire Features">
+              <h2>4.1 - Campfire Features</h2>
+<p><em>[going to have GIFS to show each feature]</em></p>
+<ul>
+<li><strong>Looks Good to Me (LGTM)</strong> <strong>Button</strong> - Quickly approve changes with a simple acknowledgment</li>
+<li><strong>Comments</strong> – Provide feedback directly on the deploy preview. Comments are synchronized with the GitHub pull request</li>
+<li><strong>Session Replay</strong> - Capture user interactions in real-time to demonstrate issues or document testing scenarios</li>
+</ul>
+
+            </section>
+          
+            <section id="section-4-2-Who-Campfire-is-For" data-section="Who Campfire is For">
+              <h2>4.2 - Who Campfire is For</h2>
+<p><em>[add who Campfire isn’t for? Based on Joey’s feedback]</em></p>
+<p>Campfire is designed to support front-end applications that meet the following criteria:</p>
+<ul>
+<li>Hosted on GitHub</li>
+<li>Contains a Dockerfile</li>
+<li>Backend-independent: Either doesn't require a backend or interacts with an externally hosted backend via API</li>
+</ul>
+
+            </section>
+          
+            <section id="section-5-Developing-Campfire" data-section="Developing Campfire">
+              <h1>5 - Developing Campfire</h1>
+<p>In order to build Campfire, we identified four components of a collaborative deploy preview solution:</p>
+<p>1. <strong>Automation</strong> - An automated process to generate deploy previews for each new pull request, or new commit to an existing pull-request.</p>
+<p>2. **Access **- A reliable and straightforward method for users to access these previews to view and interact with the proposed changes.</p>
+<p>3. <strong>Feedback Interface</strong> - An integrated feedback mechanism within the deploy preview to collect and display feedback, allowing stakeholders to comment and discuss directly on the preview.</p>
+<p>4. **Data Storage **- A place to store and manage Campfire’s data.</p>
+<p>The following diagram gives an overview of how we addressed each component and how it fits into our final architecture. We’ll be going into more detail about each component in the following sections.</p>
+<p><img src="images/image9.png" alt="alt_text" title="image_tooltip"></p>
+<p>[below is a GIF but thinking of making it interactive so it shows the relevant part of the architecture highlighted when the user hovers over some text next to it labeled automation, access, feedback interface and storage, rather than just being a gif]</p>
+<p><img src="images/image10.gif" alt="alt_text" title="image_tooltip"></p>
+
+            </section>
+          
+            <section id="section-5-1-Automating-Deploy-Previews" data-section="Automating Deploy Previews">
+              <h2>5.1 - Automating Deploy Previews</h2>
+<h2></h2>
+<p><img src="images/image11.png" alt="alt_text" title="image_tooltip"></p>
+<p>The architecture of our system starts with the automatic deployment of deploy previews, which are generated for each pull request to a repository and hosted temporarily. We faced two primary decisions in this area:</p>
+<ol>
+<li>
+<p>How to automatically trigger a deployment when a pull request is made.</p>
+</li>
+<li>
+<p>How to host the client application once deployed.</p>
+</li>
+</ol>
+<p>We initially considered using webhooks to notify an endpoint whenever a pull request was triggered. However, this required maintaining a dedicated service to handle webhook events, which would involve additional resources.</p>
+<p>We opted instead for GitHub Actions, a CI/CD platform that offers the flexibility of using either self-hosted or GitHub-hosted runners to automate workflows. This approach eliminates the need to manage separate resources for webhook responses. GitHub Actions automatically provisions an environment to execute our defined workflows, which handle tasks like authenticating cloud services, spinning up the necessary resources for the deploy preview, and posting the preview URL back to the pull request.</p>
+<p>Additionally, GitHub Actions manages the lifecycle of the runners, ensuring they shut down gracefully and clean up resources after execution. This efficiency and integration led us to choose GitHub Actions for automating the deployment of deploy previews.</p>
+<p><img src="images/image12.gif" alt="alt_text" title="image_tooltip"></p>
+<p>The next step involved selecting a service to temporarily host the client application. In order to accommodate a diverse range of applications and simplify deployment processes, Campfire chose to support containerized applications. Containerization involves packaging an application along with its dependencies and configurations into a standardized unit, or container, that can run consistently across any environment. This approach reduces the complexity of deploying applications because it abstracts the details of the underlying infrastructure.</p>
+<p>Containers ensure that the application behaves the same way in development, testing, and production environments, which is critical for reliable deploy previews. By focusing on containerized applications, we ensured that any type of application, regardless of its specific setup or technology stack, can be easily integrated and previewed without extensive customization.</p>
+<p>To efficiently manage these containers, especially at scale, container orchestration became a necessary part of our infrastructure. For this purpose, we considered Docker Swarm and Kubernetes, but found their complexity and management requirements excessive for our needs. Campfire requires only one container per pull request, making the lightweight and less complex AWS Elastic Container Service (ECS) a more suitable choice. AWS ECS simplifies container management by automating the deployment, scaling, and monitoring of containers, allowing us to focus on delivering stable and consistent deploy previews without the overhead of managing the orchestration layer ourselves.</p>
+<p>Within AWS ECS, we were presented with two launch types: EC2 and Fargate. AWS EC2 offers more control over the underlying instances, but it also requires more management. AWS Fargate, on the other hand, abstracts the underlying server infrastructure, providing a serverless experience that automatically scales and manages the container lifecycle. This choice is particularly suitable for Campfire as it only requires a single container for each application and does not require customized container orchestration.</p>
+
+            </section>
+          
+            <section id="section-5-2-Accessing-Deploy-Previews" data-section="Accessing Deploy Previews">
+              <h2>5.2 - Accessing Deploy Previews</h2>
+<p><img src="images/image13.png" alt="alt_text" title="image_tooltip"></p>
+<p>Ensuring easy access to each deploy preview is crucial for the functionality of Campfire. Within our setup, each deploy preview operates as a separate task in AWS ECS, which automatically assigns a public IP to these tasks. A task in this context refers to a running instance of a containerized application, specified by its CPU, memory, and network settings. These tasks are crucial for handling the containerized applications of each pull request.</p>
+<p>However, these public IPs can change if a task is restarted due to updates, configuration changes, or scaling operations. To manage the dynamic nature of public IPs, we implemented an application load balancer. This load balancer acts as a router, distributing incoming traffic across our preview tasks efficiently. It utilizes listeners to monitor and direct traffic based on predefined rules.</p>
+<p>The traffic is then routed through these rules to target groups, which are collections of tasks configured within ECS to receive specific types of traffic. AWS manages the routing from the load balancer to these target groups and ensures that the correct tasks receive the necessary traffic. This setup ensures that access to deploy previews remains stable and continuous, even when individual tasks undergo IP changes due to restarts, thereby maintaining seamless access to all deploy previews.</p>
+<p><img src="images/image14.png" alt="alt_text" title="image_tooltip"></p>
+<p>Initially, we experimented with path-based rules for routing – directing traffic to specific services based on URL paths, for example, &quot;/client-app/12&quot; for accessing the preview of pull request 12. However, this approach proved inadequate due to 404 errors when browsers requested additional resources not accounted for in the path-based rules.</p>
+<p><img src="images/image15.png" alt="alt_text" title="image_tooltip"></p>
+<p>The solution evolved to using host-based routing, where the load balancer would manage requests to a host like &quot;client-app-12.preview.campfire.com&quot; as an example, ensuring all subsequent resource requests for a particular preview consistently reached the correct service.</p>
+<p><img src="images/image16.png" alt="alt_text" title="image_tooltip"></p>
+<p>This method eliminated the 404 issue as the host-based approach accurately directed all related traffic to the appropriate deploy preview environment, regardless of the specific resource being requested.</p>
+
+            </section>
+          
+            <section id="section-5-3-Feedback-Interface" data-section="Feedback Interface">
+              <h2>5.3 - Feedback Interface</h2>
+<p><img src="images/image17.png" alt="alt_text" title="image_tooltip"></p>
+<p>We wanted to design our feedback interface to do a few things:</p>
+<ul>
+<li>to be integrated with the deploy preview</li>
+<li>to be able to handle comments</li>
+<li>to allow the user to capture richer data about their experience in order to give more context in their feedback</li>
+</ul>
+<h3>5.3.1 - Integrating the Deploy Preview with the Feedback Interface</h3>
+<p><img src="images/image18.gif" alt="alt_text" title="image_tooltip"></p>
+<p>When it came to integrating our feedback interface with our deploy preview, we had two options:</p>
+<ol>
+<li>Inject or ask the user to add the feedback interface to their application – perhaps as a custom web component, script, or using an iframe</li>
+<li>Create a feedback interface application that embeds the deploy preview within it using an iframe</li>
+</ol>
+<p><img src="images/image19.png" alt="alt_text" title="image_tooltip"></p>
+<p>For simplicity’s sake, we decided to go with option 2. We built a React application with an iframe that points to the deploy preview.</p>
+<p>This meant that everytime we deployed a preview app, we actually had to generate two URLs: one that pointed to the deploy preview itself, and one that pointed to the feedback interface.</p>
+<table>
+  <tr>
+   <td><strong>Component</strong>
+   </td>
+   <td><strong>URL</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>Deploy Preview
+   </td>
+   <td>client-app-12.preview.campfire.com
+   </td>
+  </tr>
+  <tr>
+   <td>Feedback Interface
+   </td>
+   <td>feedback-interface.campfire.com/client-app/12
+   </td>
+  </tr>
+</table>
+<p>The user would be given the URL that pointed to the feedback interface, while the URL generated for the deploy preview would be used internally by the feedback interface application.</p>
+<table>
+  <tr>
+   <td colspan="2" >trade-offs
+   </td>
+  </tr>
+  <tr>
+   <td>
+<img src="images/image20.png" width="" alt="alt_text" title="image_tooltip">
+   </td>
+   <td>
+<img src="images/image21.png" width="" alt="alt_text" title="image_tooltip">
+   </td>
+  </tr>
+  <tr>
+   <td>Pros:
+<ul>
+<li>Only need one running task per deploy preview, when there are no active deploy previews, no resources are being used on AWS
+<li>Since the feedback interface is embedded within the deploy preview, the deploy preview will load first, and then the feedback interface will load second, which might be a better user experience
+<p>
+Cons:
+<ul>
+<li>Additional complexity: who adds the script to the application – us or the user? Where in the application should we embed the feedback interface? Would it work across different front-end frameworks for building applications?
+</li>
+</ul>
+</li>
+</ul>
+   </td>
+   <td>Pros:
+<ul>
+<li>Simple to implement
+<li>Don’t need to worry about it working in all applications
+<p>
+Cons:
+<ul>
+<li>Even when no deploy previews are up, feedback interface would still be running on aws, leading to additional costs even though the user isn’t using it
+</li>
+</ul>
+</li>
+</ul>
+   </td>
+  </tr>
+</table>
+<p>Using iframes in our architecture added complexities and increased costs, as it required a separate task to run the feedback interface continuously, even when not in use. To address these issues, we considered using web components, which are custom reusable HTML elements, to embed the feedback interface directly within the client app. This integration could potentially reduce the need for a separate task and better match resource use with actual demand for deploy previews. However, we were cautious about adopting web components because they might not support all the functionalities needed for the feedback interface and could introduce additional complexity in its management.</p>
+<h3>5.3.2 - Comments</h3>
+<p>In Campfire, comments are crucial for enabling detailed feedback and discussions directly within deploy previews. Comments allow all stakeholders, including those without technical expertise or a GitHub account, to actively participate in the deployment review process. Comments allow teams to discuss issues and suggest improvements, fostering an interactive and collaborative review environment.</p>
+<p>To ensure a cohesive experience, we designed Campfire to aggregate comments in both the GitHub interface and within the deploy preview itself. This dual visibility ensures that feedback is not lost across platforms and supports a unified discussion thread that all team members can follow and contribute to, regardless of where they choose to interact.</p>
+<p>To accomplish this, we needed to retrieve existing comments from GitHub pull requests and also enable the posting of new comments from within Campfire. The implementation of this commenting functionality involved integrating with GitHub’s API.</p>
+<p>GitHub has three options for Campfire to obtain the necessary authorization in order to push comments from Campfire back to the GitHub pull request: a Personal Access Token, a User Access Token, or an App Installation Token. The first two options require a user to have a GitHub account.</p>
+<p>Recognizing that not all Campfire users would have a GitHub account, we chose to utilize GitHub’s App Installation Token for authorization. This approach allows Campfire to post comments on behalf of users, thereby maintaining the integrity of the feedback loop while removing barriers to participation for users who are not registered on GitHub.</p>
+<p>Generating this token requires the organization using Campfire to register and install a GitHub App. Once the app was installed, Campfire would then be able to generate the required authorization though its credentials. Afterwards, the GitHub App automatically cross-posts any comments made in Campfire directly to the pull request.</p>
+<p>Adding authorization to our requests also benefited our GET requests: increasing the rate limits and allowing GET requests to private repos.</p>
+<p>Using our GitHub app to authorize POST requests to the API, however, also meant that all Campfire user’s comments would be attributed to the App:</p>
+<p><img src="images/image22.png" alt="alt_text" title="image_tooltip"></p>
+<p>To get around this issue, Campfire displays a welcome screen for first time users before they are able to view the deploy preview. The name the user enters is then stored in their browser’s local storage, ready for use on subsequent visits. The user’s name is also displayed in the top right corner of the feedback interface and prefixed to any comments they make through Campfire.</p>
+<table>
+  <tr>
+   <td>
+<img src="images/image23.png" width="" alt="alt_text" title="image_tooltip">
+<p>
+The welcome screen asks the user for their name before they can interact with the deploy preview.
+   </td>
+   <td>
+<img src="images/image24.png" width="" alt="alt_text" title="image_tooltip">
+<p>
+Once they enter their name it’s displayed in the top right.
+<p>
+<img src="images/image25.png" width="" alt="alt_text" title="image_tooltip">
+<p>
+The tab is collapsible so it’s not in the way.
+   </td>
+  </tr>
+</table>
+<p>Comments can now be attributed to the right user:
+<img src="images/image26.png" alt="alt_text" title="image_tooltip"></p>
+<p>In addition, Campfire includes some basic information on the user’s operating system, browser, and screen-size in order to give better context to comments. For example, it may be the case that the UI breaks in certain browsers, but not others, or when viewed at certain dimensions. Having the user’s browser stack info enables the engineering team to more easily replicate the conditions that lead to issues, thereby fixing any bugs much faster.</p>
+<p>To avoid exposing sensitive data from the feedback interface, the GitHub App’s credentials were stored in AWS Secrets Manager. Any GitHub-related actions required retrieving these credentials beforehand to authenticate the GitHub App.</p>
+<p><img src="images/image27.png" alt="alt_text" title="image_tooltip"></p>
+<p>Flow for posting comments ^</p>
+<h3>5.3.3 - Exploring Screen Capture Solutions</h3>
+<p>In addition to plaintext comments, we explored adding screen capture functionality to Campfire to enrich user feedback with more context. The goal was to enhance debugging and provide a clearer understanding of user experiences by recording interactions that can help quickly identify and resolve issues.</p>
+<p>There's a few different ways to approach building a screen capture feature, each serving distinct purposes: screenshots, screen recordings, and session replays.</p>
+<p>Screenshots capture a single moment in time which is useful for highlighting specific issues, while screen recordings capture a sequence of actions, offering a video-like review of user interactions.</p>
+<p>Session replay goes even further by recording all DOM events to create a detailed playback of user interactions, offering the most comprehensive insight into user behaviors and problems encountered during a session. This rich data is invaluable for developers seeking to understand and replicate issues users face.</p>
+<p>Our exploration of potentially adding a screen capture functionality to Campfire began with researching the SDKs of third-party tools such as Loom and Zight, which offer screen recording and screenshot capabilities. We decided to not use these solutions given that they’re not open-source or self-hosted, which doesn’t align with Campfire’s open-source design.</p>
+<p>We also looked at open-source libraries like “html2canvas”, “react-screen-capture”, and the “Client-Side Screen Capture” API for screenshot capabilities. However, we found that these tools couldn’t capture the full range of user interactions dynamically. Session replay became the preferred choice because it records detailed user activities in the app, providing a more comprehensive and dynamic overview.</p>
+<p>Session replay differs from screen recordings as it captures DOM events to reconstruct the user interactions that occurred on the website. This includes mouse movements, clicks, scroll events, keystrokes, and any mutations in the DOM such as changes in the layout, text, or added/removed elements. We felt this aligns better with Campfire's objective of improving collaboration and feedback by offering a deeper analysis and debugging capability.</p>
+<h3>5.3.4 - Implementing Session Replay and SDK</h3>
+<p>To provide context-rich, feedback features into Campfire, we implemented session replay as a key component of the feedback interface. Users can create visual recordings of the deploy preview and upload them directly to the comment interface through a shareable link. We chose the open-source rrweb library to implement this feature due to its ease of use.</p>
+<p>Unfortunately, we ran into a limitation with rrweb when recording embedded applications, as the session replay redacted all interactions that occurred within the iframe. Due to cross-origin policies and browser security measures, libraries such as rrweb are prohibited from accessing the contents of iframes that are hosted on different domains. This presented an issue as the origins of embedded deploy previews were different from the feedback interface.</p>
+<p><img src="images/image28.gif" alt="alt_text" title="image_tooltip"></p>
+<p><em>^ session replay not working and only showing a blank screen</em></p>
+<p>In situations where developers have ownership of both the parent application (feedback interface) and the embedded application (client application), rrweb suggests embedding their library components to both applications. All recorded user interactions in the embedded application are then sent to the parent application.</p>
+<p><img src="images/image29.png" alt="alt_text" title="image_tooltip"></p>
+<p>While rrweb's solution successfully displayed iframes in recordings, it required having rrweb's components being embedded in the client application. For Campfire, this presented an additional prerequisite for the user: the rrweb component (or an SDK) must be embedded into the application in order for the session replay feature to function properly. We dismissed this option as one of our priorities in developing Campfire was to have as few prerequisites for our users as possible.</p>
+<p>Another alternative to rrweb’s solution was to programmatically inject the rrweb component into the embedded application. This removed the prerequisite for users to manually embed the component themselves. However, this idea was later deemed unviable due to security measures enforced by browsers. The same cross-origin policies that restricted rrweb from directly recording iframes also restricted parent applications from accessing the contents of the iframe. For Campfire, the feedback interface could not manipulate the DOM of the iframe and inject the rrweb component.</p>
+<p>The third option was to use special response headers when requesting the client application in the feedback interface. In the HTTP request/response lifecycle, the Content-Security-Policy response header can be used to authorize certain origins to access the requested resource (i.e., the client application) within iframes. For Campfire, this meant the feedback interface could be whitelisted and allowed to manipulate the DOM of the embedded client application.</p>
+<p>While this approach appeared to be a viable solution, Campfire’s current AWS infrastructure cannot append response headers to resources without the addition of other AWS services. AWS’s Application Load Balancer does not provide a mechanism for adding response headers. AWS Cloudfront, on the other hand, provides the capabilities to do so. To avoid adding additional complexity to our AWS infrastructure, we did not choose this approach.</p>
+<p>After considering our possible solutions and their tradeoffs, we decided the simplest approach would be to create our own SDK and require clients to embed the SDK into their applications. The SDK abstracts away the rrweb library component and is responsible for transmitting recorded user interactions back to the feedback interface.</p>
+<p><img src="images/image30.png" alt="alt_text" title="image_tooltip"></p>
+<p>Although the SDK adds an additional prerequisite for our users, we believed it was the most straightforward option for our first iteration of Campfire. An advantage of building an SDK is we can continue to build onto the SDK in the future to add new features to the feedback interface. Features that we had previously decided against due to the lack of inter-iframe communication can now be implemented with the addition of the SDK.</p>
+<h3>5.3.6 - Handling Ad Blocker Interference</h3>
+<p>After incorporating the rrweb library for session replay into our Campfire application, we encountered a significant issue: the entire Campfire app failed to load for users with ad-blocking extensions active in their browsers. This problem was traced back to rrweb being integrated into several of our React components, which are interconnected. When rrweb was blocked by an ad blocker, it led to a cascading failure, preventing the entire application from loading, not just the session replay feature.</p>
+<p>To address this, instead of identifying and managing individual ad-blocking extensions, we focused on detecting whether the rrweb functionality was obstructed. If rrweb failed to load, we implemented a system to inform the user through a notification banner, advising them to disable their ad blocker to access Campfire.</p>
+<p>Implementing this solution involved exploring dynamic component and module loading in React. By adopting dynamic imports, we were able to conditionally load rrweb components, ensuring that even if these components failed to load due to an ad blocker, the rest of the application would remain functional. This approach also allowed us to display a banner alerting users of the need to disable their ad blockers.</p>
+<h3>5.3.7 - Serverless Backend</h3>
+<p>To support the operational needs of Campfire, adding a backend to Campfire was necessary. This backend would primarily handle API interactions with GitHub for comment synchronization and utilize AWS services for secure data handling and storage. Authenticated calls to GitHub's API were essential for retrieving and posting comments to pull requests, while the AWS SDK was needed to securely manage sensitive authentication data and store session replay data. Given the complexity of these tasks, choosing the right backend architecture was crucial to maintaining efficient operations without excessive overhead.</p>
+<p>We initially considered two main approaches for our backend infrastructure: a traditional server-based backend and a serverless architecture. The traditional setup would have involved using a server, such as one running an Express application, potentially paired with a web server like Nginx to manage API routing and load balancing. This arrangement would likely require continuous running of multiple server tasks, increasing operational complexity and costs.</p>
+<p>To minimize maintenance and streamline scaling, we opted for a serverless approach using AWS Lambda, a serverless computing service that allows developers to run code without provisioning or managing servers. Lambda functions automatically scale based on the demand, executing code in response to events and managing the compute resources required. This integration with AWS services enables secure interactions and data handling, with costs incurred only when the functions are actually executed. By adopting Lambda, we effectively reduced the overhead of managing server infrastructure and enhanced scalability and cost-effectiveness, focusing solely on the functionality of the code.</p>
+<p>Briefly explain what a backend server (express) is.</p>
+<p>Explain what a lambda is.</p>
+
+            </section>
+          
+            <section id="section-5-4-Data-Storage" data-section="Data Storage">
+              <h2>5.4 - Data Storage</h2>
+<p><img src="images/image31.png" alt="alt_text" title="image_tooltip"></p>
+<p>We required a reliable storage solution for data generated from user interactions, such as session replay recordings and images, to facilitate easier sharing. We chose AWS S3 buckets for their robustness and seamless integration with other AWS services.</p>
+<p>While considering storage options, we evaluated DynamoDB for its NoSQL capabilities, which offer rapid and versatile data management. However, we opted for the object storage features of S3, which are better suited for handling large files like images and screen recordings.</p>
+<p>We also deliberated on how users would access the stored data, particularly the visual context needed for feedback. The decision was made to serve images and session replays via URLs allowing users to view these directly within the Campfire interface or through links embedded in GitHub comments.</p>
+
+            </section>
+          
+            <section id="section-6-Using-Campfire" data-section="Using Campfire">
+              <h1>6 - Using Campfire</h1>
+<p><em>[section TBD]</em></p>
+<p>Campfire’s CLI consists of four commands: <code>init</code>, <code>setup</code>, <code>list</code>, and <code>destroy</code>.</p>
+<p><code>setup</code></p>
+<p>The setup command can be divided into four different parts in order to set up Campfire’s infrastructure. The first step is registering a GitHub App, which Campfire will use for authenticating Github-related actions, on either a user’s personal account or organization. The second step is acquiring an AWS TLS/SSL Certificate in order to set up the Application Load Balancer. The certificate must be validated before moving onto the next step. The third step is creating Campfire’s CloudFormation stack. This provisions resources for Campfire’s AWS infrastructure such as deploying Campfire’s feedback interface application on AWS ECS, creating Lambda functions for API calls, and initializing preliminary resources for the client’s future deploy previews. The fourth and final step instructs the user to add CNAME records to their DNS.</p>
+<p>[screenshot/IF of setup command]</p>
+<p><code>init</code></p>
+<p>The init command writes GitHub Action workflow files to the user’s Git repository and prompts user to add AWS credentials to their GitHub repository as GitHub Secrets. The workflows will be triggered on future pull requests and the AWS credentials must be stored in the repository for the workflows to have access to them. Additionally, the init command creates an ECS Cluster for the application on Campfire’s VPC.</p>
+<p>[screenshot/IF of init command]</p>
+<p><code>list</code></p>
+<p>The list command outputs a list of all projects that have been initialized with Campfire’s workflow files.</p>
+<p><br>
+[screenshot/IF of list command]</p>
+<p><br>
+<code>destroy</code></p>
+<p>The destroy command will remove all Campfire resources from the user’s AWS account. Before proceeding with this command, it is important all open pull requests for projects listed in the <code>list</code> command are closed. If any deploy previews are still running, the stack deletion process will fail.</p>
+<p>[screenshot/IF of destroy command]</p>
+
+            </section>
+          
+            <section id="section-7-Future-Work" data-section="Future Work">
+              <h1>7 - Future Work</h1>
+<h3>7.1 - CSS Editor</h3>
+<p>Integrating a CSS Editor into Campfire’s feedback interface would allow users to suggest CSS modifications directly within the preview environment. This feature would enable more detailed visual collaboration on styling changes and improve the process of refining the UI/UX. Proposed CSS changes could then be automatically formatted into code snippets and attached to the corresponding pull request, facilitating a smoother review and integration workflow.</p>
+<h3>7.2 - Screenshots</h3>
+<p>Introducing a screenshot feature would enable users to capture and share specific moments or layouts from their deploy preview without having to record an entire session replay. This would be particularly useful for visually documenting issues or highlighting design elements, providing a quick and clear reference point in discussions. Additionally, images can be posted to GitHub discussions directly instead of having a session replay link that takes users back to their deploy preview. .</p>
+<h3>7.3 - GitHub User Authorization</h3>
+<p>Enhancing Campfire with optional GitHub user authorization would allow users to interact with the feedback interface directly. This would ensure that comments and feedback are accurately attributed, enhancing traceability and accountability in the collaboration process.</p>
+<h3>7.4 - Reduce Costs</h3>
+<p>In the future, we also want to explore ways to cut costs, possibly using web components or other techniques. Our current setup has the client app and feedback interface on separate clusters, which can be inefficient. For example, the feedback interface's cluster runs non-stop, costing money even without active deploy previews. A better approach might be to merge the feedback interface with the client app before deployment. This could be done by injecting code or using web components, which would allow both parts to run on the same cluster, saving resources and money.</p>
+<p>Additionally, we may consider implementing a scaling strategy where the system could automatically scale down to zero in periods of inactivity. This approach would reduce the cluster to minimal operational status, effectively cutting costs by not running unnecessary resources.</p>
+
+            </section>
+          
+            <section id="section-8-References" data-section="References">
+              <h1>8 - References</h1>
+<ol>
+<li><a href="https://pipelinedriven.org/article/the-four-biggest-issues-with-having-static-environments">The Four Biggest Issues With Having Static Environments</a>
+<ol>
+<li><a href="https://www.qovery.com/blog/overcoming-shared-environment-bottlenecks/">Overcoming Shared Environment Bottlenecks</a></li>
+<li><a href="https://release.com/staging-environments">https://release.com/staging-environments</a></li>
+</ol>
+</li>
+<li><a href="https://webapp.io/blog/what-is-an-ephemeral-environment/">What is an ephemeral environment?</a></li>
+<li><a href="https://livecycle.io/blogs/ephemeral-environments-2022/">The Ephemeral Environment Landscape</a></li>
+<li><a href="https://resources.github.com/software-development/what-is-sdlc/">https://resources.github.com/software-development/what-is-sdlc/</a> (unused)</li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ol>
 
             </section>
           

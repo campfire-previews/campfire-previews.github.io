@@ -1,0 +1,17 @@
+<h1>6 - Using Campfire</h1>
+<p><em>[section TBD]</em></p>
+<p>Campfire’s CLI consists of four commands: <code>init</code>, <code>setup</code>, <code>list</code>, and <code>destroy</code>.</p>
+<p><code>setup</code></p>
+<p>The setup command can be divided into four different parts in order to set up Campfire’s infrastructure. The first step is registering a GitHub App, which Campfire will use for authenticating Github-related actions, on either a user’s personal account or organization. The second step is acquiring an AWS TLS/SSL Certificate in order to set up the Application Load Balancer. The certificate must be validated before moving onto the next step. The third step is creating Campfire’s CloudFormation stack. This provisions resources for Campfire’s AWS infrastructure such as deploying Campfire’s feedback interface application on AWS ECS, creating Lambda functions for API calls, and initializing preliminary resources for the client’s future deploy previews. The fourth and final step instructs the user to add CNAME records to their DNS.</p>
+<p>[screenshot/IF of setup command]</p>
+<p><code>init</code></p>
+<p>The init command writes GitHub Action workflow files to the user’s Git repository and prompts user to add AWS credentials to their GitHub repository as GitHub Secrets. The workflows will be triggered on future pull requests and the AWS credentials must be stored in the repository for the workflows to have access to them. Additionally, the init command creates an ECS Cluster for the application on Campfire’s VPC.</p>
+<p>[screenshot/IF of init command]</p>
+<p><code>list</code></p>
+<p>The list command outputs a list of all projects that have been initialized with Campfire’s workflow files.</p>
+<p><br>
+[screenshot/IF of list command]</p>
+<p><br>
+<code>destroy</code></p>
+<p>The destroy command will remove all Campfire resources from the user’s AWS account. Before proceeding with this command, it is important all open pull requests for projects listed in the <code>list</code> command are closed. If any deploy previews are still running, the stack deletion process will fail.</p>
+<p>[screenshot/IF of destroy command]</p>
