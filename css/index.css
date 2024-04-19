@@ -274,9 +274,6 @@ nav {
   h3 {
     font-size: 1.2rem;
   }
-  p {
-    display: flex;
-  }
 
   article a {
     color: var(--off-white);
@@ -302,6 +299,25 @@ nav {
   article ol,
   article ul {
     margin-left: 10px;
+  }
+
+  a.reference {
+    font-size: 0.75rem;
+    color: var(--yellow);
+    text-decoration: none;
+    padding: 2px;
+  }
+
+  a.reference:hover {
+    color: var(--light-orange);
+  }
+
+  a.reference::before {
+    content: "(";
+  }
+
+  a.reference::after {
+    content: ")";
   }
 }
 
