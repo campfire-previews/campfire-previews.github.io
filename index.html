@@ -218,31 +218,32 @@
               In this case study, we'll frequently reference the following
               technical terms:
             </p>
-            <ul>
-              <li>
-                <p>
-                  <strong>Client App</strong> - The codebase of the user,
-                  retrieved from the repository when initiating a new pull
-                  request or when a new commit is made to the same pull request.
-                </p>
-              </li>
-              <li>
-                <p>
-                  <strong>Deploy Preview</strong> - The ephemeral infrastructure
-                  provisioned to host a live preview of the Client App for each
-                  pull request. Also known as ephemeral environments, preview
-                  environments, or preview apps.
-                </p>
-              </li>
-              <li>
-                <p>
-                  <strong>Feedback Interface</strong> - A relatively new
-                  component of some deploy preview solutions, which provides an
-                  overlay for user collaboration and feedback on the previewed
-                  changes.
-                </p>
-              </li>
-            </ul>
+            <table>
+              <tr>
+                <th>Client App</th>
+                <td>
+                  The codebase of the user, retrieved from the repository when
+                  initiating a new pull request or when a new commit is made to
+                  the same pull request.
+                </td>
+              </tr>
+              <tr>
+                <th>Deploy Preview</th>
+                <td>
+                  The ephemeral infrastructure provisioned to host a live
+                  preview of the Client App for each pull request. Also known as
+                  ephemeral environments, preview environments, or preview apps.
+                </td>
+              </tr>
+              <tr>
+                <th>Feedback Interface</th>
+                <td>
+                  A relatively new component of some deploy preview solutions,
+                  which provides an overlay for user collaboration and feedback
+                  on the previewed changes.
+                </td>
+              </tr>
+            </table>
           </section>
 
           <section id="section-2-The-Problem" data-section="The Problem">
@@ -277,49 +278,70 @@
               The process of resolving bugs found in staging involves several
               structured steps, especially when using tools like GitHub:
             </p>
-            <ul>
-              <li>
-                <strong>Branch Creation</strong> - Developers create a new
-                branch from the main codebase, allowing them to address bugs
-                without impacting the stable production version.
-              </li>
-              <li>
-                <strong>Commit Changes</strong> - Necessary fixes are made and
-                committed to the branch, with detailed commit messages
-                explaining the changes.
-              </li>
-              <li>
-                <strong>Push to Repository</strong> - The branch is then pushed
-                to the remote repository on GitHub.
-              </li>
-              <li>
-                <strong>Create Pull Request</strong> - A pull request is opened
-                against the main branch for merging the fixes and facilitating
-                code review.
-              </li>
-              <li>
-                <strong>Code Review and Approval</strong> - The pull request is
-                reviewed by team members who may suggest or request changes.
-              </li>
-              <li>
-                <strong>Merge and Deploy to Staging</strong> - After approval,
-                the changes are merged and deployed to the staging environment
-                to verify the bug fix.
-              </li>
-              <li>
-                <strong>Testing in Staging</strong> - The application is tested
-                in staging to ensure the fix is effective and no new issues have
-                arisen.
-              </li>
-              <li>
-                <strong>Push to Production</strong> - Once confirmed, the
-                changes are deployed to production.
-              </li>
-              <li>
-                <strong>Monitoring</strong> - Post-deployment the application is
-                monitored for any unexpected issues.
-              </li>
-            </ul>
+            <table>
+              <tr>
+                <th>Branch Creation</th>
+                <td>
+                  Developers create a new branch from the main codebase,
+                  allowing them to address bugs without impacting the stable
+                  production version.
+                </td>
+              </tr>
+              <tr>
+                <th>Commit Changes</th>
+                <td>
+                  Necessary fixes are made and committed to the branch, with
+                  detailed commit messages explaining the changes.
+                </td>
+              </tr>
+              <tr>
+                <th>Push to Repository</th>
+                <td>
+                  The branch is then pushed to the remote repository on GitHub.
+                </td>
+              </tr>
+              <tr>
+                <th>Create Pull Request</th>
+                <td>
+                  A pull request is opened against the main branch for merging
+                  the fixes and facilitating code review./td>
+                </td>
+              </tr>
+
+              <tr>
+                <th>Code Review and Approval</th>
+                <td>
+                  The pull request is reviewed by team members who may suggest
+                  or request changes.
+                </td>
+              </tr>
+              <tr>
+                <th>Merge and Deploy to Staging</th>
+                <td>
+                  After approval, the changes are merged and deployed to the
+                  staging environment to verify the bug fix./td>
+                </td>
+              </tr>
+
+              <tr>
+                <th>Testing in Staging</th>
+                <td>
+                  The application is tested in staging to ensure the fix is
+                  effective and no new issues have arisen.
+                </td>
+              </tr>
+              <tr>
+                <th>Push to Production</th>
+                <td>Once confirmed, the changes are deployed to production.</td>
+              </tr>
+              <tr>
+                <th>Monitoring</th>
+                <td>
+                  Post-deployment the application is monitored for any
+                  unexpected issues./td>
+                </td>
+              </tr>
+            </table>
             <p>
               If bugs are detected during staging tests, the process from branch
               creation to staging deployment may need to be repeated to ensure
@@ -531,7 +553,6 @@
               ability to record sessions to provide context-rich feedback right
               within the deploy preview.
             </p>
-            <h2></h2>
             <p>
               <img
                 src="images/case-study/tradeoffs.png"
@@ -613,49 +634,35 @@
             </p>
             <ol>
               <li>
-                <p>
-                  <strong>Automation</strong> - An automated process to generate
-                  deploy previews for each new pull request, or new commit to an
-                  existing pull-request.
-                </p>
+                <strong>Automation</strong> - An automated process to generate
+                deploy previews for each new pull request, or new commit to an
+                existing pull-request.
               </li>
               <li>
-                <p>
-                  <strong>Access</strong> - A reliable and straightforward
-                  method for users to access these previews to view and interact
-                  with the proposed changes.
-                </p>
+                <strong>Access</strong> - A reliable and straightforward method
+                for users to access these previews to view and interact with the
+                proposed changes.
               </li>
               <li>
-                <p>
-                  <strong>Feedback Interface</strong> - An integrated feedback
-                  mechanism within the deploy preview to collect and display
-                  feedback, allowing stakeholders to comment and discuss
-                  directly on the preview.
-                </p>
+                <strong>Feedback Interface</strong> - An integrated feedback
+                mechanism within the deploy preview to collect and display
+                feedback, allowing stakeholders to comment and discuss directly
+                on the preview.
               </li>
               <li>
-                <p>
-                  <strong>Data Storage</strong> - A place to store and manage
-                  Campfire’s data.
-                </p>
-                <p>
-                  This diagram is an overview of all the responsibilities we
-                  described and how they interact with each other:
-                </p>
+                <strong>Data Storage</strong> - A place to store and manage
+                Campfire’s data.
               </li>
             </ol>
+            <p>
+              This diagram is an overview of all the responsibilities we
+              described and how they interact with each other:
+            </p>
             <p>
               <img
                 src="images/case-study/high-level-overview.png"
                 alt="Campfire architecture by responsibilities"
               />
-            </p>
-            <p>
-              [below is a GIF but thinking of making it interactive so it shows
-              the relevant part of the architecture highlighted when the user
-              hovers over some text next to it labeled automation, access,
-              feedback interface and storage, rather than just being a gif]
             </p>
           </section>
 
@@ -664,7 +671,6 @@
             data-section="Automating Deploy Previews"
           >
             <h2>5.1 - Automating Deploy Previews</h2>
-            <h2></h2>
             <p>
               <img
                 src="images/case-study/automation.png"
@@ -711,7 +717,7 @@
             </p>
             <p>
               <img
-                src="images/case-study/automation.png"
+                src="images/case-study/09.gif"
                 alt="Trigger deploy preview using GitHub Actions"
               />
             </p>

@@ -230,12 +230,13 @@ nav {
   padding-top: 20px;
   color: white;
 
-  /* article houses case study content */
+  /* article wraps case study content */
   article {
     display: flex;
     flex-direction: column;
     gap: 50px;
     margin-left: var(--toc-width);
+    max-width: 650px;
   }
 
   article > section {
@@ -277,7 +278,7 @@ nav {
     display: flex;
   }
 
-  a {
+  article a {
     color: var(--off-white);
     font-family: "Bodoni Moda", "Times New Roman", Times, serif;
     font-style: italic;
@@ -287,8 +288,20 @@ nav {
     color: var(--red);
   }
 
-  ul li {
+  article ul li {
     list-style-type: disc;
+    list-style: outside;
+    padding: 10px;
+  }
+  article ol li {
+    list-style: outside;
+    padding: 10px;
+    list-style-type: decimal;
+  }
+
+  article ol,
+  article ul {
+    margin-left: 10px;
   }
 }
 
