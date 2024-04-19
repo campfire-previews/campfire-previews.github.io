@@ -236,13 +236,28 @@ nav {
     flex-direction: column;
     gap: 50px;
     margin-left: var(--toc-width);
-    max-width: 650px;
+    max-width: 700px;
+    line-height: 2rem;
   }
 
   article > section {
     display: flex;
     flex-direction: column;
     gap: 30px;
+  }
+
+  p,
+  ul,
+  ol {
+    color: #f2f2f2;
+    font-weight: 300;
+    font-size: 1.1rem;
+  }
+
+  td,
+  th {
+    text-align: left;
+    vertical-align: top;
   }
 
   img {
@@ -288,17 +303,17 @@ nav {
   article ul li {
     list-style-type: disc;
     list-style: outside;
-    padding: 10px;
+    padding: 5px;
   }
   article ol li {
     list-style: outside;
-    padding: 10px;
+    padding: 5px;
     list-style-type: decimal;
   }
 
   article ol,
   article ul {
-    margin-left: 10px;
+    margin-left: 45px;
   }
 
   a.reference {
@@ -318,6 +333,16 @@ nav {
 
   a.reference::after {
     content: ")";
+  }
+
+  .multiple-images {
+    display: flex;
+    gap: 10px;
+  }
+
+  .multiple-images p {
+    display: flex;
+    flex-direction: column;
   }
 }
 

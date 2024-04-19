@@ -9,8 +9,10 @@
     <link rel="icon" href="images/favicon.svg" type="image/svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
     <script src="js/script.js" defer></script>
@@ -218,32 +220,29 @@
               In this case study, we'll frequently reference the following
               technical terms:
             </p>
-            <table>
-              <tr>
-                <th>Client App</th>
-                <td>
-                  The codebase of the user, retrieved from the repository when
-                  initiating a new pull request or when a new commit is made to
-                  the same pull request.
-                </td>
-              </tr>
-              <tr>
-                <th>Deploy Preview</th>
-                <td>
-                  The ephemeral infrastructure provisioned to host a live
-                  preview of the Client App for each pull request. Also known as
-                  ephemeral environments, preview environments, or preview apps.
-                </td>
-              </tr>
-              <tr>
-                <th>Feedback Interface</th>
-                <td>
-                  A relatively new component of some deploy preview solutions,
-                  which provides an overlay for user collaboration and feedback
-                  on the previewed changes.
-                </td>
-              </tr>
-            </table>
+            <ul>
+              <li>
+                <strong>Client App</strong> - The codebase of the user,
+                retrieved from the repository when initiating a new pull request
+                or when a new commit is made to the same pull request.
+              </li>
+              <li>
+                <p>
+                  <strong>Deploy Preview</strong> - The ephemeral infrastructure
+                  provisioned to host a live preview of the Client App for each
+                  pull request. Also known as ephemeral environments, preview
+                  environments, or preview apps.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <strong>Feedback Interface</strong> - A relatively new
+                  component of some deploy preview solutions, which provides an
+                  overlay for user collaboration and feedback on the previewed
+                  changes.
+                </p>
+              </li>
+            </ul>
           </section>
 
           <section id="section-2-The-Problem" data-section="The Problem">
@@ -279,70 +278,49 @@
               The process of resolving bugs found in staging involves several
               structured steps, especially when using tools like GitHub:
             </p>
-            <table>
-              <tr>
-                <th>Branch Creation</th>
-                <td>
-                  Developers create a new branch from the main codebase,
-                  allowing them to address bugs without impacting the stable
-                  production version.
-                </td>
-              </tr>
-              <tr>
-                <th>Commit Changes</th>
-                <td>
-                  Necessary fixes are made and committed to the branch, with
-                  detailed commit messages explaining the changes.
-                </td>
-              </tr>
-              <tr>
-                <th>Push to Repository</th>
-                <td>
-                  The branch is then pushed to the remote repository on GitHub.
-                </td>
-              </tr>
-              <tr>
-                <th>Create Pull Request</th>
-                <td>
-                  A pull request is opened against the main branch for merging
-                  the fixes and facilitating code review.
-                </td>
-              </tr>
-
-              <tr>
-                <th>Code Review and Approval</th>
-                <td>
-                  The pull request is reviewed by team members who may suggest
-                  or request changes.
-                </td>
-              </tr>
-              <tr>
-                <th>Merge and Deploy to Staging</th>
-                <td>
-                  After approval, the changes are merged and deployed to the
-                  staging environment to verify the bug fix.
-                </td>
-              </tr>
-
-              <tr>
-                <th>Testing in Staging</th>
-                <td>
-                  The application is tested in staging to ensure the fix is
-                  effective and no new issues have arisen.
-                </td>
-              </tr>
-              <tr>
-                <th>Push to Production</th>
-                <td>Once confirmed, the changes are deployed to production.</td>
-              </tr>
-              <tr>
-                <th>Monitoring</th>
-                <td>
-                  Post-deployment the application is monitored for any
-                  unexpected issues.
-                </td>
-              </tr>
-            </table>
+            <ol>
+              <li>
+                <strong>Branch Creation</strong> - Developers create a new
+                branch from the main codebase, allowing them to address bugs
+                without impacting the stable production version.
+              </li>
+              <li>
+                <strong>Commit Changes</strong> - Necessary fixes are made and
+                committed to the branch, with detailed commit messages
+                explaining the changes.
+              </li>
+              <li>
+                <strong>Push to Repository</strong> - The branch is then pushed
+                to the remote repository on GitHub.
+              </li>
+              <li>
+                <strong>Create Pull Request</strong> - A pull request is opened
+                against the main branch for merging the fixes and facilitating
+                code review.
+              </li>
+              <li>
+                <strong>Code Review and Approval</strong> - The pull request is
+                reviewed by team members who may suggest or request changes.
+              </li>
+              <li>
+                <strong>Merge and Deploy to Staging</strong> - After approval,
+                the changes are merged and deployed to the staging environment
+                to verify the bug fix.
+              </li>
+              <li>
+                <strong>Testing in Staging</strong> - The application is tested
+                in staging to ensure the fix is effective and no new issues have
+                arisen.
+              </li>
+              <li>
+                <strong>Push to Production</strong> - Once confirmed, the
+                changes are deployed to production.
+              </li>
+              <li>
+                <strong>Monitoring</strong> - Post-deployment the application is
+                monitored for any unexpected issues.
+              </li>
+            </ol>
             <p>
               If bugs are detected during staging tests, the process from branch
               creation to staging deployment may need to be repeated to ensure
@@ -687,11 +665,13 @@
               hosted temporarily until the pull request is closed. We faced two
               primary decisions in this area:
             </p>
-            <p>
-              1. How to automatically trigger a deployment when a pull request
-              is made?
-            </p>
-            <p>2. How to host the client application once deployed?</p>
+            <ol>
+              <li>
+                How to automatically trigger a deployment when a pull request is
+                made?
+              </li>
+              <li>How to host the client application once deployed?</li>
+            </ol>
             <h3>5.1.1 Automatically Triggering Deployment</h3>
             <p>
               We initially considered using webhooks to trigger a self-hosted
@@ -1063,30 +1043,35 @@
               also displayed in the top right corner of the feedback interface
               and prefixed to any comments they make through Campfire.
             </p>
-            <p>
+            <div>
               <img
                 src="images/case-study/welcome-name.png"
                 alt="Prompt the user for name"
               />
-            </p>
-            <p>
-              The welcome screen asks the user for their name before they can
-              interact with the deploy preview.
-            </p>
-            <p>
-              <img
-                src="images/case-study/name-banner.png"
-                alt="Name banner in feedback interface"
-              />
-            </p>
-            <p>Once they enter their name it’s displayed in the top right.</p>
-            <p>
-              <img
-                src="images/case-study/name-banner-collapsed.png"
-                alt="Name banner in feedback interface hidden"
-              />
-            </p>
-            <p>The tab is collapsible so it’s not in the way.</p>
+              <p>
+                The welcome screen asks the user for their name before they can
+                interact with the deploy preview.
+              </p>
+            </div>
+            <div class="multiple-images">
+              <div>
+                <img
+                  src="images/case-study/name-banner.png"
+                  alt="Name banner in feedback interface"
+                />
+                <p>
+                  Once they enter their name it’s displayed in the top right.
+                </p>
+              </div>
+              <div>
+                <img
+                  src="images/case-study/name-banner-collapsed.png"
+                  alt="Name banner in feedback interface hidden"
+                />
+                <p>The tab is collapsible so it’s not in the way.</p>
+              </div>
+            </div>
+
             <p>
               Comments can now be attributed to the right user:
               <img
@@ -1193,17 +1178,12 @@
               deploy preview domain and feedback interface domain were not the
               same.
             </p>
+            <p>The following gif shows the blank screen that would result:</p>
             <p>
               <img
                 src="images/case-study/blank-screen-recording.gif"
                 alt="GIF of session replay being blank"
               />
-            </p>
-            <p>
-              <em
-                >^ session replay not working and only showing a blank
-                screen</em
-              >
             </p>
             <p>
               In situations where developers have ownership of both the parent
