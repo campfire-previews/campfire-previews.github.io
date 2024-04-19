@@ -1,5 +1,0 @@
-<h2>5.4 - Data Storage</h2>
-<p><img src="images/image31.png" alt="alt_text" title="image_tooltip"></p>
-<p>We required a reliable storage solution for data generated from user interactions, such as session replay recordings and images, to facilitate easier sharing. We chose AWS S3 buckets for their robustness and seamless integration with other AWS services.</p>
-<p>While considering storage options, we evaluated DynamoDB for its NoSQL capabilities, which offer rapid and versatile data management. However, we opted for the object storage features of S3, which are better suited for handling large files like images and screen recordings.</p>
-<p>We also deliberated on how users would access the stored data, particularly the visual context needed for feedback. The decision was made to serve images and session replays via URLs allowing users to view these directly within the Campfire interface or through links embedded in GitHub comments.</p>

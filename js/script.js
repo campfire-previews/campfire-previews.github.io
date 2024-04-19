@@ -1,3 +1,23 @@
+// code for adding lightbox to case study
+
+function addLightBox() {
+  const caseStudy = document.querySelector("#case-study-content article");
+  const images = caseStudy.querySelectorAll("img");
+  images.forEach((img) => {
+    const a = document.createElement("a");
+    a.href = img.src;
+    a.dataset.fslightbox = img.src;
+
+    // Make a copy of the image and make it a child of 'a'
+    const imgCopy = img.cloneNode(true);
+    a.appendChild(imgCopy);
+
+    // Replace the image with 'a'
+    img.parentNode.replaceChild(a, img);
+  });
+  refreshFsLightbox();
+}
+
 /*code for the toc and case study*/
 const caseStudy = document.getElementById("case-study");
 const toc = document.getElementById("toc");
@@ -6,7 +26,6 @@ const tocLinksCount = tocLinks.length;
 
 function isTOCVisible() {
   const caseStudyTopIsVisible = window.scrollY >= caseStudy.offsetTop;
-  console.log(caseStudyTopIsVisible);
   const caseStudyBottomIsVisible =
     window.scrollY + window.innerHeight >
     caseStudy.offsetHeight + caseStudy.offsetTop;
@@ -15,7 +34,6 @@ function isTOCVisible() {
 }
 
 function handleTOCVisibility() {
-  console.log("handleTOC");
   if (isTOCVisible()) {
     toc.classList.add("show");
   } else {
@@ -91,6 +109,7 @@ function throttle(callback, wait) {
 function handlePageLoad() {
   handleTOCVisibility();
   handleTOCSelection();
+  addLightBox();
 }
 
 function handleScroll() {
@@ -101,5 +120,3 @@ function handleScroll() {
 //events
 document.addEventListener("DOMContentLoaded", handlePageLoad);
 document.addEventListener("scroll", throttle(handleScroll, 16));
-
-console.log("JS 8");

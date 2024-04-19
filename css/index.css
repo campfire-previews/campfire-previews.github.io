@@ -10,6 +10,7 @@
   --gray: #d3d2cc;
   --toc-width: 320px;
   font-family: "proxima-nova", sans-serif;
+  /* font-family: "futura", sans-serif; */
   scroll-behavior: smooth;
 }
 
@@ -22,6 +23,7 @@ header {
   position: fixed;
   padding: 10px;
   z-index: 100;
+  background-color: var(--dark-blue);
 
   img {
     height: 52px;
@@ -244,21 +246,49 @@ nav {
 
   img {
     margin: auto;
+    width: 100%;
   }
 
   & > h1 {
+    display: inline-block;
+    border-top: 2px solid var(--darker-red);
+    padding-right: 10px;
+    padding-top: 10px;
     margin-bottom: 70px;
   }
+
+  h1,
+  h2,
+  h3 {
+    font-family: "futura", sans-serif;
+  }
   h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   h2 {
-    font-size: 1.35rem;
+    font-size: 1.5rem;
   }
 
+  h3 {
+    font-size: 1.2rem;
+  }
   p {
     display: flex;
+  }
+
+  a {
+    color: var(--off-white);
+    font-family: "Bodoni Moda", "Times New Roman", Times, serif;
+    font-style: italic;
+  }
+
+  a:hover {
+    color: var(--red);
+  }
+
+  ul li {
+    list-style-type: disc;
   }
 }
 
@@ -270,7 +300,6 @@ nav {
 /* CASE STUDY TABLE OF CONTENTS */
 
 #toc {
-  /* display: none; */
   width: var(--toc-width);
   position: fixed;
   top: 5rem;
@@ -341,7 +370,11 @@ nav {
   background-color: var(--off-white);
 
   h1 {
-    font-size: 1.35rem;
+    font-size: 2rem;
+    display: inline-block;
+    padding-right: 5px;
+    padding-top: 10px;
+    color: var(--dark-blue);
   }
 }
 
