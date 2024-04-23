@@ -275,6 +275,12 @@
               <a class="reference" href="#section-8-References">3</a>
             </p>
             <p>
+              <img
+                src="images/case-study/staging-blocked.png"
+                alt="Bottleneck"
+              />
+            </p>
+            <p>
               The process of resolving bugs found in staging involves several
               structured steps, especially when using tools like GitHub:
             </p>
@@ -392,10 +398,26 @@
           >
             <h2>2.2 - Limitations of Deploy Previews</h2>
             <p>
-              While deploy previews were adept at showcasing code changes, they lacked an interface to provide feedback to the proposed changes within the same application. This forced users to use third-party tools to provide feedback on the proposed changes, like Slack and Github for comments or Loom and Zight (formerly CloudApp) for screen recordings, or synchronous video calls. The absence of a unified feedback interface often led to scattered comments across many different platforms, complicating the aggregation and tracking of feedback, and often causing the context to be lost.
+              While deploy previews were adept at showcasing code changes, they
+              lacked an interface to provide feedback to the proposed changes
+              within the same application. This forced users to use third-party
+              tools to provide feedback on the proposed changes, like Slack and
+              Github for comments or Loom and Zight (formerly CloudApp) for
+              screen recordings, or synchronous video calls. The absence of a
+              unified feedback interface often led to scattered comments across
+              many different platforms, complicating the aggregation and
+              tracking of feedback, and often causing the context to be lost.
             </p>
             <p>
-              Comments made across multiple different platforms led to disjointed communication, complicating the feedback process. Even if developers consolidated discussions on GitHub, non-engineering team members, such as project managers, designers, and QA personnel, were often left out of the loop. They often don’t have GitHub accounts and would seek a straightforward way to comment on visual changes. Not having a built-in, accessible feedback system in deploy previews made it harder to collaborate and quickly fix problems.
+              Comments made across multiple different platforms led to
+              disjointed communication, complicating the feedback process. Even
+              if developers consolidated discussions on GitHub, non-engineering
+              team members, such as project managers, designers, and QA
+              personnel, were often left out of the loop. They often don’t have
+              GitHub accounts and would seek a straightforward way to comment on
+              visual changes. Not having a built-in, accessible feedback system
+              in deploy previews made it harder to collaborate and quickly fix
+              problems.
               <a class="reference" href="#section-8-References">8</a>
             </p>
             <p>
@@ -457,10 +479,23 @@
               interactive and detailed discussions. Unlike Netlify, Vercel syncs
               their comments with Slack rather than GitHub.
             </p>
-            <img
-              src="images/case-study/vercel-screenshot.png"
-              alt="Screenshot of Vercel's Comments"
-            />
+            <div class="multiple-images">
+              <p>
+                <img
+                  src="images/case-study/vercel-comments.png"
+                  alt="Screenshot of Vercel's Comments"
+                  data-group="preview-as-a-feature"
+                />
+              </p>
+              <p>
+                <img
+                  src="images/case-study/netlify-drawer.png"
+                  alt="Client requesting resources using path routing from the application load balancer"
+                  data-group="preview-as-a-feature"
+                />
+              </p>
+            </div>
+
             <p>
               These services, while feature-rich, come with the caveat of
               requiring full application hosting on their platforms, limiting
@@ -484,6 +519,12 @@
               automatically captures user interactions within the preview
               environment, offering a replayable video that begins recording
               from the moment the user visits the deploy preview.
+            </p>
+            <p>
+              <img
+                src="images/case-study/livecycle.png"
+                alt="screenshot of livecycle(cropped)"
+              />
             </p>
           </section>
 
@@ -800,12 +841,22 @@
               errors when browsers requested additional resources not accounted
               for in the path-based rules.
             </p>
-            <p>
-              <img
-                src="images/case-study/path-based.png"
-                alt="Client requesting resources using path routing from the application load balancer"
-              />
-            </p>
+            <div class="multiple-images">
+              <p>
+                <img
+                  src="images/case-study/path-based-rule-1.png"
+                  alt="Client requesting resources using path routing from the application load balancer"
+                  data-group="path-based-rule"
+                />
+              </p>
+              <p>
+                <img
+                  src="images/case-study/path-based-rule-2.png"
+                  alt="Client requesting resources using path routing from the application load balancer"
+                  data-group="path-based-rule"
+                />
+              </p>
+            </div>
             <p>
               The solution evolved to using host-based routing, where the load
               balancer would manage requests to a host like
@@ -813,12 +864,22 @@
               ensuring all subsequent resource requests for a particular preview
               consistently reached the correct service.
             </p>
-            <p>
-              <img
-                src="images/case-study/host-based.png"
-                alt="Client requesting resources using host based rules from the application load balancer using subdomains from the application load balancer"
-              />
-            </p>
+            <div class="multiple-images">
+              <p>
+                <img
+                  src="images/case-study/host-based-rule-1.png"
+                  alt="Client requesting resources using path routing from the application load balancer"
+                  data-group="host-based-rule"
+                />
+              </p>
+              <p>
+                <img
+                  src="images/case-study/host-based-rule-2.png"
+                  alt="Client requesting resources using path routing from the application load balancer"
+                  data-group="host-based-rule"
+                />
+              </p>
+            </div>
             <p>
               This method eliminated the 404 issue as the host-based approach
               accurately directed all related traffic to the appropriate deploy
@@ -933,7 +994,7 @@
               interface, while the URL generated for the deploy preview would be
               used internally by the feedback interface application.
             </p>
-           
+
             <h3>5.3.2 - Comments</h3>
             <p>
               Comments allow all stakeholders, including those without technical
@@ -1120,6 +1181,12 @@
               also structures data in a way conducive to further analytics.
             </p>
             <p>
+              <img
+                src="images/case-study/events-array.png"
+                alt="array of session replay events"
+              />
+            </p>
+            <p>
               Conversely, screen recordings provide a continuous video capture
               of the user's screen, which can include elements outside the
               webpage context, like video streams and browser extensions. Screen
@@ -1204,6 +1271,14 @@
               of the iframe.This meant the feedback interface could not
               manipulate the DOM of the iframe and inject the rrweb component.
             </p>
+
+            <p>
+              <img
+                src="images/case-study/feedback-interface-blocked.png"
+                alt="rrweb in client app communicating with rrweb in feedback interface"
+              />
+            </p>
+
             <p>
               The third option was for the client application to use special
               response headers when being retrieved from the feedback interface.

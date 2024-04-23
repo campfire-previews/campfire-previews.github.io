@@ -6,7 +6,12 @@ function addLightBox() {
   images.forEach((img) => {
     const a = document.createElement("a");
     a.href = img.src;
-    a.dataset.fslightbox = img.src;
+
+    if (img.dataset.group) {
+      a.dataset.fslightbox = img.dataset.group;
+    } else {
+      a.dataset.fslightbox = img.src;
+    }
 
     // Make a copy of the image and make it a child of 'a'
     const imgCopy = img.cloneNode(true);
@@ -61,7 +66,7 @@ function handleTOCSelection() {
     const tocItem = link.closest("li");
     const dataSection = tocItem.dataset.section;
     const subItems = document.querySelectorAll(
-      `li.subitem[data-section="${dataSection}"]`,
+      `li.subitem[data-section="${dataSection}"]`
     );
 
     subItems.forEach((subItem) => {
