@@ -1302,6 +1302,17 @@
               <li>a serverless architecture</li>
             </ul>
             <p>
+              A traditional backend setup would involve using a server, for
+              example an Express application, paired with a web server, like
+              Nginx, to manage API routing. This type of set-up would have the
+              benefit of avoiding cold starts that are the result of using a
+              serverless architecture. The trade-off is that the user would have
+              to pay the costs of having a server running continuously, even if
+              there are little to no requests being handled. Since deploy
+              previews don’t necessarily need the speed that comes with avoiding
+              cold starts, we thought it best to maximize cost-efficiency.
+            </p>
+            <p>
               We opted for a serverless approach using AWS Lambda, a computing
               service that allows you to execute code without provisioning or
               managing servers. Using an API Gateway with Lambda integration did
@@ -1312,17 +1323,6 @@
               architecture, the services we chose to use are far less expensive
               than having multiple ECS services running on a cluster on the
               user’s account.
-            </p>
-            <p>
-              A traditional backend setup would involve using a server, for
-              example an Express application, paired with a web server, like
-              Nginx, to manage API routing. This type of set-up would have the
-              benefit of avoiding cold starts that are the result of using a
-              serverless architecture. The trade-off is that the user would have
-              to pay the costs of having a server running continuously, even if
-              there are little to no requests being handled. Since deploy
-              previews don’t necessarily need the speed that comes with avoiding
-              cold starts, we thought it best to maximize cost-efficiency.
             </p>
           </section>
 
