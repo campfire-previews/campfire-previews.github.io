@@ -257,6 +257,7 @@
               systems like Git and SVN to better manage and track code changes.
               However, these systems did not solve the problem of testing
               changes in a controlled environment before production deployment.
+              <br>
               <a class="reference" href="#section-8-References">1</a>
               <a class="reference" href="#section-8-References">2</a>
             </p>
@@ -331,6 +332,7 @@
               If bugs are detected during staging tests, the process from branch
               creation to staging deployment may need to be repeated to ensure
               all issues are thoroughly addressed.
+              <br>
               <a class="reference" href="#section-8-References">4</a
               ><a class="reference" href="#section-8-References">5</a
               ><a class="reference" href="#section-8-References">6</a>
@@ -559,14 +561,7 @@
           >
             <h1>4 - Introducing Campfire</h1>
             <p>
-              Campfire removes the trouble of building a DIY solution from
-              scratch while still providing organizations control over their
-              data, and allowing integration into an existing CI/CD pipeline.
-              Though not as feature- and integration-rich as solutions like
-              Livecycle, Netlify Drawer and Vercel, it offers an open-source
-              solution with comments that sync to a GitHub pull-request and the
-              ability to record sessions to provide context-rich feedback right
-              within the deploy preview.
+              Campfire removes the trouble of building a DIY solution from scratch while still providing organizations control over their data, and allowing integration into an existing CI/CD pipeline. Our primary goal was to design a feedback interface that integrates seamlessly with the deploy preview, ensuring stakeholders can provide feedback without switching contexts. This interface supports comments and session replays and allows the capture of contextual data to enhance understanding. Although not as feature and integration-rich as solutions like Livecycle, Netlify Drawer, and Vercel, Campfire offers an open-source alternative with comments that sync to a GitHub pull request and the ability to record sessions, providing context-rich feedback directly within the deploy preview.
             </p>
             <p>
               <img
@@ -1383,6 +1378,17 @@
               <li>a serverless architecture</li>
             </ul>
             <p>
+              A traditional backend setup would involve using a server, for
+              example an Express application, paired with a web server, like
+              Nginx, to manage API routing. This type of set-up would have the
+              benefit of avoiding cold starts that are the result of using a
+              serverless architecture. The trade-off is that the user would have
+              to pay the costs of having a server running continuously, even if
+              there are little to no requests being handled. Since deploy
+              previews don’t necessarily need the speed that comes with avoiding
+              cold starts, we thought it best to maximize cost-efficiency.
+            </p>
+            <p>
               We opted for a serverless approach using AWS Lambda, a computing
               service that allows you to execute code without provisioning or
               managing servers. Using an API Gateway with Lambda integration did
@@ -1393,17 +1399,6 @@
               architecture, the services we chose to use are far less expensive
               than having multiple ECS services running on a cluster on the
               user’s account.
-            </p>
-            <p>
-              A traditional backend setup would involve using a server, for
-              example an Express application, paired with a web server, like
-              Nginx, to manage API routing. This type of set-up would have the
-              benefit of avoiding cold starts that are the result of using a
-              serverless architecture. The trade-off is that the user would have
-              to pay the costs of having a server running continuously, even if
-              there are little to no requests being handled. Since deploy
-              previews don’t necessarily need the speed that comes with avoiding
-              cold starts, we thought it best to maximize cost-efficiency.
             </p>
           </section>
 
@@ -1464,8 +1459,8 @@
           </section>
 
           <section id="section-7-Future-Work" data-section="Future Work">
-            <h1>7 - Future Work</h1>
-            <h3>7.1 - CSS Editor</h3>
+            <h1>6 - Future Work</h1>
+            <h3>6.1 - CSS Editor</h3>
             <p>
               Integrating a CSS Editor into Campfire’s feedback interface would
               allow users to suggest CSS modifications directly within the
@@ -1476,7 +1471,7 @@
               corresponding pull request, facilitating a smoother review and
               integration workflow.
             </p>
-            <h3>7.2 - Screenshots</h3>
+            <h3>6.2 - Screenshots</h3>
             <p>
               Introducing a screenshot feature would enable users to capture and
               share specific moments or layouts from their deploy preview
@@ -1487,7 +1482,7 @@
               to GitHub discussions directly instead of having a session replay
               link that takes users back to their deploy preview. .
             </p>
-            <h3>7.3 - GitHub User Authorization</h3>
+            <h3>6.3 - GitHub User Authorization</h3>
             <p>
               Enhancing Campfire with optional GitHub user authorization would
               allow users to interact with the feedback interface directly. This
@@ -1495,7 +1490,7 @@
               enhancing traceability and accountability in the collaboration
               process.
             </p>
-            <h3>7.4 - Reduce Costs</h3>
+            <h3>6.4 - Reduce Costs</h3>
             <p>
               In the future, we also want to explore ways to cut costs, possibly
               using web components or other techniques. Our current setup has
@@ -1517,7 +1512,7 @@
           </section>
 
           <section id="section-8-References" data-section="References">
-            <h1>8 - References</h1>
+            <h1>7 - References</h1>
             <ol>
               <li>
                 <a
