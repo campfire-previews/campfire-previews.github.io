@@ -20,9 +20,9 @@
   </head>
   <body>
     <header class="transparent-background">
-			<a href="#landing-wrap">
-				<img alt="campfire-logo" src="images/logo.svg" />
-			</a>
+      <a href="#landing-wrap">
+        <img alt="campfire-logo" src="images/logo.svg" />
+      </a>
       <nav>
         <a href="#case-study-content">case study</a>
         <a href="#team">team</a>
@@ -61,10 +61,10 @@
       <div id="rock-left"></div>
       <section id="landing-features"></section>
     </div>
-		
-		<a id="navigate-top-button" href="#landing-wrap">
-			<img src="images/up-arrow.svg" alt="up-arrow" />
-		</a>
+
+    <a id="navigate-top-button" href="#landing-wrap">
+      <img src="images/up-arrow.svg" alt="up-arrow" />
+    </a>
 
     <section id="features">
       <article id="features-wrapper">
@@ -81,7 +81,10 @@
               pull-request
             </h2>
             <p>
-              Each deploy preview showcases the commit with the proposed changes. Accessible through a public URL, it directs users to their specific deploy environment, which is equipped with Campfire’s comprehensive suite of feedback tools.
+              Each deploy preview showcases the commit with the proposed
+              changes. Accessible through a public URL, it directs users to
+              their specific deploy environment, which is equipped with
+              Campfire’s comprehensive suite of feedback tools.
             </p>
           </div>
         </div>
@@ -98,7 +101,10 @@
               involved early in the development cycle
             </h2>
             <p>
-              Designers, QA testers, and product managers can review and comment on proposed changes directly within the Campfire feedback interface, ensuring feedback from all relevant stakeholders is integrated early in the development process.
+              Designers, QA testers, and product managers can review and comment
+              on proposed changes directly within the Campfire feedback
+              interface, ensuring feedback from all relevant stakeholders is
+              integrated early in the development process.
             </p>
           </div>
         </div>
@@ -115,7 +121,10 @@
               browser and screen-size information
             </h2>
             <p>
-              This data helps engineers pinpoint exactly when and where issues arise, leading to more accurate feedback. These insights are essential for optimizing user experiences across various devices and browsers, guaranteeing a seamless interface for all users.
+              This data helps engineers pinpoint exactly when and where issues
+              arise, leading to more accurate feedback. These insights are
+              essential for optimizing user experiences across various devices
+              and browsers, guaranteeing a seamless interface for all users.
             </p>
           </div>
         </div>
@@ -127,10 +136,14 @@
             />
           </div>
           <div class="text">
-            <h2>effortless installation and configuration with the Campfire <span>CLI</span>
+            <h2>
+              effortless installation and configuration with the Campfire
+              <span>CLI</span>
             </h2>
             <p>
-              The Campfire CLI makes it quick and straightforward to get started setting up deploy previews, so you can focus more on development and less on configuration.
+              The Campfire CLI makes it quick and straightforward to get started
+              setting up deploy previews, so you can focus more on development
+              and less on configuration.
             </p>
           </div>
         </div>
@@ -451,10 +464,11 @@
               within the same application. This forced users to use third-party
               tools to provide feedback on the proposed changes, like Slack and
               GitHub for comments or Loom and Zight (formerly CloudApp) for
-              screen recordings, or Zoom for synchronous video calls. The absence of a
-              unified feedback interface often led to scattered comments across
-              many different platforms, complicating the aggregation and
-              tracking of feedback, and often causing the context to be lost.
+              screen recordings, or Zoom for synchronous video calls. The
+              absence of a unified feedback interface often led to scattered
+              comments across many different platforms, complicating the
+              aggregation and tracking of feedback, and often causing the
+              context to be lost.
             </p>
             <p>
               Comments made across multiple different platforms led to
@@ -902,7 +916,12 @@
               public IPs, we implemented an application load balancer.
             </p>
             <p>
-              Generally, a load balancer distributes incoming network traffic across multiple servers. For Campfire, which hosts a single instance of a client’s application in a container, the load balancer functions more like a router. It efficiently channels incoming traffic to our preview tasks, using listeners to direct traffic according to predefined Campfire rules.
+              Generally, a load balancer distributes incoming network traffic
+              across multiple servers. For Campfire, which hosts a single
+              instance of a client’s application in a container, the load
+              balancer functions more like a router. It efficiently channels
+              incoming traffic to our preview tasks, using listeners to direct
+              traffic according to predefined Campfire rules.
             </p>
             <p>
               The traffic is then routed through these rules to target groups,
@@ -1040,7 +1059,13 @@
               />
             </p>
             <p>
-              The first option involves running a single task, the deploy preview, with the feedback interface integrated directly into it. This approach could reduce costs because no additional components are active when there are no deploy previews. However, it complicates the user experience by adding an extra step, and may restrict the types of applications we can support due to the need to ensure compatibility with various frontend frameworks.
+              The first option involves running a single task, the deploy
+              preview, with the feedback interface integrated directly into it.
+              This approach could reduce costs because no additional components
+              are active when there are no deploy previews. However, it
+              complicates the user experience by adding an extra step, and may
+              restrict the types of applications we can support due to the need
+              to ensure compatibility with various frontend frameworks.
             </p>
             <p>
               Since the second option would not require any additional work on
@@ -1050,7 +1075,11 @@
               iframe that points to the deploy preview.
             </p>
             <p>
-              We opted for the second option, which requires no additional effort from the user and maximizes application compatibility. To achieve this, we developed a separate feedback interface, embedding the deploy preview within an iframe in a React application.
+              We opted for the second option, which requires no additional
+              effort from the user and maximizes application compatibility. To
+              achieve this, we developed a separate feedback interface,
+              embedding the deploy preview within an iframe in a React
+              application.
             </p>
             <table>
               <tr>
@@ -1110,7 +1139,10 @@
             <p>
               Recognizing that not all Campfire users would have a GitHub
               account, we chose to utilize GitHub’s App Installation Token for
-              authorization. This approach enables Campfire to post comments on behalf of users, allowing feedback added in Campfire to sync with the pull request. It also permits users who are not registered on GitHub to contribute their own feedback.
+              authorization. This approach enables Campfire to post comments on
+              behalf of users, allowing feedback added in Campfire to sync with
+              the pull request. It also permits users who are not registered on
+              GitHub to contribute their own feedback.
             </p>
             <p>
               <img
@@ -1119,7 +1151,12 @@
               />
             </p>
             <p>
-              Generating the App Installation Token requires the user or organization using Campfire to register and install a GitHub App with configured permissions. Once the app is installed, Campfire is able to generate the required authorization through its credentials and cross-post any comments made in Campfire directly to the pull request.
+              Generating the App Installation Token requires the user or
+              organization using Campfire to register and install a GitHub App
+              with configured permissions. Once the app is installed, Campfire
+              is able to generate the required authorization through its
+              credentials and cross-post any comments made in Campfire directly
+              to the pull request.
             </p>
             <p>
               To avoid exposing sensitive data from the feedback interface, the
@@ -1654,7 +1691,7 @@
       <div id="contact-sheet-wrapper">
         <!-- Rachele -->
         <div class="contact-sheet">
-          <img alt="rachele" src="images/team/rachele.png" />
+          <img alt="rachele" src="images/team/rachele1.png" />
           <h2>rachele lang</h2>
           <p>denver, CO</p>
           <div class="contact-icons">
@@ -1737,7 +1774,7 @@
 
         <!-- Tess -->
         <div class="contact-sheet">
-          <img alt="tess" src="images/team/tess.png" />
+          <img alt="tess" src="images/team/tess1.png" />
           <h2>tess lockey</h2>
           <p>las vegas, NV</p>
           <div class="contact-icons">
