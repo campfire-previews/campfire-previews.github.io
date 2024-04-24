@@ -204,9 +204,9 @@ nav {
   }
 }
 
-.feature .gif {
+.feature .gif img {
   min-width: 200px;
-  max-width: 300px;
+  max-width: 356px;
   height: 200px;
   background-color: var(--blue);
 }
@@ -305,6 +305,13 @@ nav {
     list-style: outside;
     padding: 5px;
   }
+
+  #section-4-2-Campfire-Features li:nth-child(even) {
+    list-style: none;
+    padding: 5px;
+  }
+
+  
   article ol li {
     list-style: outside;
     padding: 5px;
