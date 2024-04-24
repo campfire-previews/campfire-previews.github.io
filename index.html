@@ -404,8 +404,8 @@
               lacked an interface to provide feedback to the proposed changes
               within the same application. This forced users to use third-party
               tools to provide feedback on the proposed changes, like Slack and
-              Github for comments or Loom and Zight (formerly CloudApp) for
-              screen recordings, or synchronous video calls. The absence of a
+              GitHub for comments or Loom and Zight (formerly CloudApp) for
+              screen recordings, or Zoom for synchronous video calls. The absence of a
               unified feedback interface often led to scattered comments across
               many different platforms, complicating the aggregation and
               tracking of feedback, and often causing the context to be lost.
@@ -805,13 +805,7 @@
               public IPs, we implemented an application load balancer.
             </p>
             <p>
-              In general a load balancer is typically used to distribute
-              incoming network traffic across multiple instances of a single
-              application. In Campfire’s case, since we only have one instance
-              of a client’s application as a container, this load balancer acts
-              as a router, distributing incoming traffic across our preview
-              tasks efficiently. It utilizes listeners to direct traffic based
-              on Campfire’s predefined rules.
+              Generally, a load balancer distributes incoming network traffic across multiple servers. For Campfire, which hosts a single instance of a client’s application in a container, the load balancer functions more like a router. It efficiently channels incoming traffic to our preview tasks, using listeners to direct traffic according to predefined Campfire rules.
             </p>
             <p>
               The traffic is then routed through these rules to target groups,
@@ -949,14 +943,7 @@
               />
             </p>
             <p>
-              The first option would require only one running task (the deploy
-              preview) since the feedback interface would not be a separate
-              component. This could reduce costs, since if there are no active
-              preview deploys, there would also be no running feedback
-              interface. However, it adds an extra step for the user, and we
-              would potentially limit the type of supported applications, since
-              compatibility with different frontend frameworks would have to be
-              managed.
+              The first option involves running a single task, the deploy preview, with the feedback interface integrated directly into it. This approach could reduce costs because no additional components are active when there are no deploy previews. However, it complicates the user experience by adding an extra step, and may restrict the types of applications we can support due to the need to ensure compatibility with various frontend frameworks.
             </p>
             <p>
               Since the second option would not require any additional work on
@@ -966,9 +953,7 @@
               iframe that points to the deploy preview.
             </p>
             <p>
-              This meant that everytime we deployed a preview app, we actually
-              had to generate two URLs: one that pointed to the deploy preview
-              itself, and one that pointed to the feedback interface.
+              We opted for the second option, which requires no additional effort from the user and maximizes application compatibility. To achieve this, we developed a separate feedback interface, embedding the deploy preview within an iframe in a React application.
             </p>
             <table>
               <tr>
@@ -1028,10 +1013,7 @@
             <p>
               Recognizing that not all Campfire users would have a GitHub
               account, we chose to utilize GitHub’s App Installation Token for
-              authorization. This approach allows Campfire to post comments on
-              behalf of users, thereby allowing feedback added to Campfire to
-              sync with the pull request while also enabling users who are not
-              registered on GitHub to contribute their own feedback.
+              authorization. This approach enables Campfire to post comments on behalf of users, allowing feedback added in Campfire to sync with the pull request. It also permits users who are not registered on GitHub to contribute their own feedback.
             </p>
             <p>
               <img
@@ -1040,16 +1022,11 @@
               />
             </p>
             <p>
-              Generating this token requires the user or organization using
-              Campfire to register and install a GitHub App with configured
-              permissions. Once the app is installed, Campfire is able to
-              generate the required authorization through its credentials and
-              cross-posts any comments made in Campfire directly to the pull
-              request.
+              Generating the App Installation Token requires the user or organization using Campfire to register and install a GitHub App with configured permissions. Once the app is installed, Campfire is able to generate the required authorization through its credentials and cross-post any comments made in Campfire directly to the pull request.
             </p>
             <p>
               To avoid exposing sensitive data from the feedback interface, the
-              GitHub App’s credentials were stored in AWS Secrets Manager. Any
+              GitHub App’s credentials are stored in AWS Secrets Manager. Any
               GitHub-related actions taken requires retrieving these credentials
               beforehand to authenticate the GitHub App. The following diagram
               shows the flow for posting comments:
@@ -1446,7 +1423,7 @@
                 Opens up possibility for later storing user uploaded
                 screenshots, which, because of the external nature of S3 items,
                 would make the images available not just within the feedback
-                interface, but also on github pull-requests
+                interface, but also on GitHub pull-requests
               </li>
             </ul>
             <p>
