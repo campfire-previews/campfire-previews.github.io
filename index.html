@@ -29,12 +29,29 @@
     </header>
     <div id="landing-wrap">
       <section id="landing">
-        <img src="images/logo-mark.svg" alt="campfire-logo" />
-        <h1>campfire</h1>
-        <h2>
-          open-source, self-hosted collaborative deploy previews for everyone
-        </h2>
-        <a href="#case-study-content" id="cta">read our case study</a>
+        <div id="landing-title">
+          <h2>Open-source, Self-hosted</h2>
+          <h1 class="gradient">Collaborative</h1>
+          <h1>Deploy Previews</h1>
+        </div>
+        <div id="landing-video">
+          <a data-fslightbox="gallery" href="/media/campfire-demo-v1.mp4">
+            <svg
+              width="132"
+              height="132"
+              viewBox="0 0 132 132"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="66" cy="66" r="66" />
+              <path
+                d="M90.8506 67.9255L53.4623 89.5117L53.4623 46.3394L90.8506 67.9255Z"
+                fill="#151A31"
+              />
+            </svg>
+          </a>
+          <img src="/images/video-preview.png" alt="video-preview" />
+        </div>
+        <!-- <a href="#case-study-content" id="cta">read our case study</a> -->
       </section>
     </div>
     <div id="rock-wrapper">
@@ -257,7 +274,7 @@
               systems like Git and SVN to better manage and track code changes.
               However, these systems did not solve the problem of testing
               changes in a controlled environment before production deployment.
-              <br>
+              <br />
               <a class="reference" href="#section-8-References">1</a>
               <a class="reference" href="#section-8-References">2</a>
             </p>
@@ -332,7 +349,7 @@
               If bugs are detected during staging tests, the process from branch
               creation to staging deployment may need to be repeated to ensure
               all issues are thoroughly addressed.
-              <br>
+              <br />
               <a class="reference" href="#section-8-References">4</a
               ><a class="reference" href="#section-8-References">5</a
               ><a class="reference" href="#section-8-References">6</a>
@@ -561,7 +578,19 @@
           >
             <h1>4 - Introducing Campfire</h1>
             <p>
-              Campfire removes the trouble of building a DIY solution from scratch while still providing organizations control over their data, and allowing integration into an existing CI/CD pipeline. Our primary goal was to design a feedback interface that integrates seamlessly with the deploy preview, ensuring stakeholders can provide feedback without switching contexts. This interface supports comments and session replays and allows the capture of contextual data to enhance understanding. Although not as feature and integration-rich as solutions like Livecycle, Netlify Drawer, and Vercel, Campfire offers an open-source alternative with comments that sync to a GitHub pull request and the ability to record sessions, providing context-rich feedback directly within the deploy preview.
+              Campfire removes the trouble of building a DIY solution from
+              scratch while still providing organizations control over their
+              data, and allowing integration into an existing CI/CD pipeline.
+              Our primary goal was to design a feedback interface that
+              integrates seamlessly with the deploy preview, ensuring
+              stakeholders can provide feedback without switching contexts. This
+              interface supports comments and session replays and allows the
+              capture of contextual data to enhance understanding. Although not
+              as feature and integration-rich as solutions like Livecycle,
+              Netlify Drawer, and Vercel, Campfire offers an open-source
+              alternative with comments that sync to a GitHub pull request and
+              the ability to record sessions, providing context-rich feedback
+              directly within the deploy preview.
             </p>
             <p>
               <img
