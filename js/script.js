@@ -139,7 +139,6 @@ function handlePageLoad() {
   handleTOCVisibility();
   handleTOCSelection();
   addLightBox();
-	addNavigateTop();
 }
 
 function handleScroll() {
