@@ -31,12 +31,29 @@
     </header>
     <div id="landing-wrap">
       <section id="landing">
-        <img src="images/logo-mark.svg" alt="campfire-logo" />
-        <h1>campfire</h1>
-        <h2>
-          open-source, self-hosted collaborative deploy previews for everyone
-        </h2>
-        <a href="#case-study-content" id="cta">read our case study</a>
+        <div id="landing-title">
+          <h2>Open-source, Self-hosted</h2>
+          <h1 class="gradient">Collaborative</h1>
+          <h1>Deploy Previews</h1>
+        </div>
+        <div id="landing-video">
+          <a data-fslightbox="gallery" href="/media/campfire-demo-v1.mp4">
+            <svg
+              width="132"
+              height="132"
+              viewBox="0 0 132 132"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="66" cy="66" r="66" />
+              <path
+                d="M90.8506 67.9255L53.4623 89.5117L53.4623 46.3394L90.8506 67.9255Z"
+                fill="#151A31"
+              />
+            </svg>
+          </a>
+          <img src="/images/video-preview.png" alt="video-preview" />
+        </div>
+        <!-- <a href="#case-study-content" id="cta">read our case study</a> -->
       </section>
     </div>
     <div id="rock-wrapper">
@@ -59,9 +76,7 @@
               pull-request
             </h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-              tincidunt magna id mauris molestie, ut congue tortor hendrerit. Ut
-              ornare gravida est sed congue.
+              Each deploy preview showcases the commit with the proposed changes. Accessible through a public URL, it directs users to their specific deploy environment, which is equipped with Campfire’s comprehensive suite of feedback tools.
             </p>
           </div>
         </div>
@@ -73,10 +88,7 @@
               involved early in the development cycle
             </h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-              tincidunt magna id mauris molestie, ut congue tortor hendrerit. Ut
-              ornare gravida est sed congue. Ut volutpat nibh sit amet eros
-              feugiat, vel consectetur mi fringilla.
+              Designers, QA testers, and product managers can review and comment on proposed changes directly within the Campfire feedback interface, ensuring feedback from all relevant stakeholders is integrated early in the development process.
             </p>
           </div>
         </div>
@@ -88,10 +100,17 @@
               browser and screen-size information
             </h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-              tincidunt magna id mauris molestie, ut congue tortor hendrerit. Ut
-              ornare gravida est sed congue. Ut volutpat nibh sit amet eros
-              feugiat, vel consectetur mi fringilla.
+              This data helps engineers pinpoint exactly when and where issues arise, leading to more accurate feedback. These insights are essential for optimizing user experiences across various devices and browsers, guaranteeing a seamless interface for all users.
+            </p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="gif"></div>
+          <div class="text">
+            <h2>effortless installation and configuration with the Campfire <span>CLI</span>
+            </h2>
+            <p>
+              The Campfire CLI makes it quick and straightforward to get started setting up deploy previews, so you can focus more on development and less on configuration.
             </p>
           </div>
         </div>
@@ -264,7 +283,7 @@
               systems like Git and SVN to better manage and track code changes.
               However, these systems did not solve the problem of testing
               changes in a controlled environment before production deployment.
-              <br>
+              <br />
               <a class="reference" href="#section-8-References">1</a>
               <a class="reference" href="#section-8-References">2</a>
             </p>
@@ -339,7 +358,7 @@
               If bugs are detected during staging tests, the process from branch
               creation to staging deployment may need to be repeated to ensure
               all issues are thoroughly addressed.
-              <br>
+              <br />
               <a class="reference" href="#section-8-References">4</a
               ><a class="reference" href="#section-8-References">5</a
               ><a class="reference" href="#section-8-References">6</a>
@@ -411,8 +430,8 @@
               lacked an interface to provide feedback to the proposed changes
               within the same application. This forced users to use third-party
               tools to provide feedback on the proposed changes, like Slack and
-              Github for comments or Loom and Zight (formerly CloudApp) for
-              screen recordings, or synchronous video calls. The absence of a
+              GitHub for comments or Loom and Zight (formerly CloudApp) for
+              screen recordings, or Zoom for synchronous video calls. The absence of a
               unified feedback interface often led to scattered comments across
               many different platforms, complicating the aggregation and
               tracking of feedback, and often causing the context to be lost.
@@ -568,7 +587,19 @@
           >
             <h1>4 - Introducing Campfire</h1>
             <p>
-              Campfire removes the trouble of building a DIY solution from scratch while still providing organizations control over their data, and allowing integration into an existing CI/CD pipeline. Our primary goal was to design a feedback interface that integrates seamlessly with the deploy preview, ensuring stakeholders can provide feedback without switching contexts. This interface supports comments and session replays and allows the capture of contextual data to enhance understanding. Although not as feature and integration-rich as solutions like Livecycle, Netlify Drawer, and Vercel, Campfire offers an open-source alternative with comments that sync to a GitHub pull request and the ability to record sessions, providing context-rich feedback directly within the deploy preview.
+              Campfire removes the trouble of building a DIY solution from
+              scratch while still providing organizations control over their
+              data, and allowing integration into an existing CI/CD pipeline.
+              Our primary goal was to design a feedback interface that
+              integrates seamlessly with the deploy preview, ensuring
+              stakeholders can provide feedback without switching contexts. This
+              interface supports comments and session replays and allows the
+              capture of contextual data to enhance understanding. Although not
+              as feature and integration-rich as solutions like Livecycle,
+              Netlify Drawer, and Vercel, Campfire offers an open-source
+              alternative with comments that sync to a GitHub pull request and
+              the ability to record sessions, providing context-rich feedback
+              directly within the deploy preview.
             </p>
             <p>
               <img
@@ -812,13 +843,7 @@
               public IPs, we implemented an application load balancer.
             </p>
             <p>
-              In general a load balancer is typically used to distribute
-              incoming network traffic across multiple instances of a single
-              application. In Campfire’s case, since we only have one instance
-              of a client’s application as a container, this load balancer acts
-              as a router, distributing incoming traffic across our preview
-              tasks efficiently. It utilizes listeners to direct traffic based
-              on Campfire’s predefined rules.
+              Generally, a load balancer distributes incoming network traffic across multiple servers. For Campfire, which hosts a single instance of a client’s application in a container, the load balancer functions more like a router. It efficiently channels incoming traffic to our preview tasks, using listeners to direct traffic according to predefined Campfire rules.
             </p>
             <p>
               The traffic is then routed through these rules to target groups,
@@ -956,14 +981,7 @@
               />
             </p>
             <p>
-              The first option would require only one running task (the deploy
-              preview) since the feedback interface would not be a separate
-              component. This could reduce costs, since if there are no active
-              preview deploys, there would also be no running feedback
-              interface. However, it adds an extra step for the user, and we
-              would potentially limit the type of supported applications, since
-              compatibility with different frontend frameworks would have to be
-              managed.
+              The first option involves running a single task, the deploy preview, with the feedback interface integrated directly into it. This approach could reduce costs because no additional components are active when there are no deploy previews. However, it complicates the user experience by adding an extra step, and may restrict the types of applications we can support due to the need to ensure compatibility with various frontend frameworks.
             </p>
             <p>
               Since the second option would not require any additional work on
@@ -973,9 +991,7 @@
               iframe that points to the deploy preview.
             </p>
             <p>
-              This meant that everytime we deployed a preview app, we actually
-              had to generate two URLs: one that pointed to the deploy preview
-              itself, and one that pointed to the feedback interface.
+              We opted for the second option, which requires no additional effort from the user and maximizes application compatibility. To achieve this, we developed a separate feedback interface, embedding the deploy preview within an iframe in a React application.
             </p>
             <table>
               <tr>
@@ -1035,10 +1051,7 @@
             <p>
               Recognizing that not all Campfire users would have a GitHub
               account, we chose to utilize GitHub’s App Installation Token for
-              authorization. This approach allows Campfire to post comments on
-              behalf of users, thereby allowing feedback added to Campfire to
-              sync with the pull request while also enabling users who are not
-              registered on GitHub to contribute their own feedback.
+              authorization. This approach enables Campfire to post comments on behalf of users, allowing feedback added in Campfire to sync with the pull request. It also permits users who are not registered on GitHub to contribute their own feedback.
             </p>
             <p>
               <img
@@ -1047,16 +1060,11 @@
               />
             </p>
             <p>
-              Generating this token requires the user or organization using
-              Campfire to register and install a GitHub App with configured
-              permissions. Once the app is installed, Campfire is able to
-              generate the required authorization through its credentials and
-              cross-posts any comments made in Campfire directly to the pull
-              request.
+              Generating the App Installation Token requires the user or organization using Campfire to register and install a GitHub App with configured permissions. Once the app is installed, Campfire is able to generate the required authorization through its credentials and cross-post any comments made in Campfire directly to the pull request.
             </p>
             <p>
               To avoid exposing sensitive data from the feedback interface, the
-              GitHub App’s credentials were stored in AWS Secrets Manager. Any
+              GitHub App’s credentials are stored in AWS Secrets Manager. Any
               GitHub-related actions taken requires retrieving these credentials
               beforehand to authenticate the GitHub App. The following diagram
               shows the flow for posting comments:
@@ -1453,7 +1461,7 @@
                 Opens up possibility for later storing user uploaded
                 screenshots, which, because of the external nature of S3 items,
                 would make the images available not just within the feedback
-                interface, but also on github pull-requests
+                interface, but also on GitHub pull-requests
               </li>
             </ul>
             <p>
