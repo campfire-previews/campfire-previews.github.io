@@ -1,4 +1,5 @@
 :root {
+  --darker-blue: #13161d;
   --dark-blue: #272f3f;
   --blue: #363f54;
   --red: #e2554f;
@@ -22,6 +23,10 @@
     rgba(226, 85, 79, 1) 80%,
     rgba(39, 47, 63, 1) 100%
   );
+}
+
+body {
+  background-color: var(--darker-blue);
 }
 
 /* HEADER + NAV */
@@ -193,13 +198,69 @@ nav a {
   top: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.3;
-  background-image: url("../images/stars.avif");
+  /* opacity: 0.3; */
+  background: var(--darker-blue)
+    url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+  /* background-image: url("../images/stars.avif");
   background-image: url("../images/stars.png");
   background-blend-mode: overlay;
   background-repeat: repeat;
-  background-position: 50% 0;
+  background-position: 50% 0; */
   background-size: cover;
+}
+@keyframes move-background {
+  from {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+  }
+  to {
+    -webkit-transform: translate3d(1000px, 0px, 0px);
+  }
+}
+@-webkit-keyframes move-background {
+  from {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+  }
+  to {
+    -webkit-transform: translate3d(1000px, 0px, 0px);
+  }
+}
+
+@-moz-keyframes move-background {
+  from {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+  }
+  to {
+    -webkit-transform: translate3d(1000px, 0px, 0px);
+  }
+}
+
+@-webkit-keyframes move-background {
+  from {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+  }
+  to {
+    -webkit-transform: translate3d(1000px, 0px, 0px);
+  }
+}
+
+.twinkling {
+  width: 10000px;
+  height: 100%;
+  background: transparent
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png")
+    repeat;
+  background-size: 1000px 1000px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+
+  -moz-animation: move-background 70s linear infinite;
+  -ms-animation: move-background 70s linear infinite;
+  -o-animation: move-background 70s linear infinite;
+  -webkit-animation: move-background 70s linear infinite;
+  animation: move-background 70s linear infinite;
 }
 
 /* LANDING-FEATURES TRANSITION */
@@ -222,7 +283,7 @@ nav a {
   max-width: 100%;
   height: 600px;
   z-index: 3;
-  margin-top: -500px;
+  margin-top: -450px;
   margin-bottom: -10px;
   background-repeat: no-repeat;
   background-size: cover;
